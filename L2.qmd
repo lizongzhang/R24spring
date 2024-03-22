@@ -1,0 +1,35 @@
+---
+title: "第2讲"
+---
+
+<h1 style="color: #044875;"> 第2讲 数据类型和结构 </h1>
+
+-   [讲义](https://lizongzhang.github.io/stat/data_type_structure.html)
+
+-   B站视频
+      
+    -   [R的数据类型](https://www.bilibili.com/video/BV1UL4y157kL/)
+      
+    -   [R的数据结构：向量和矩阵](https://www.bilibili.com/video/BV1jF411g7Wz/)
+      
+    -   [R的数据结构：数据框](https://www.bilibili.com/video/BV1Wi4y1U7ti/)
+    
+    -   [R的数据结构：列表list](https://www.bilibili.com/video/BV1Tr4y1H7ga/)
+
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义](https://lizongzhang.github.io/stat/chap3.html)
+
+<h3 style="color: #044875;"> 教学视频 </h3>
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具合集](https://www.bilibili.com/video/BV1uK4y1X752/)
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[EXCEL数据清洗合集](https://www.bilibili.com/video/BV1uc41177Mn/)
+
+<h3 style="color: #044875;"> 习题讲评 </h3>
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具综合运用——基金经理](https://www.bilibili.com/video/BV1UJ4m1b7Lb/)
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[教材第3章习题讲评](https://www.bilibili.com/video/BV1t3411W7V9/)
+
+<h3 style="color: #044875;"> 拓展资源 </h3>
+
+在线词云图工具 <https://www.wordclouds.com/>

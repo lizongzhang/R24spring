@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R语言与统计应用24春 -</title>
+<title>R语言与统计应用24春 - 第3讲</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -69,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -87,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -99,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">第2讲</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./L3.html"> 
+    <a class="nav-link active" href="./L3.html" aria-current="page"> 
 <span class="menu-text">第3讲</span></a>
   </li>  
   <li class="nav-item">
@@ -146,69 +147,54 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
-<div class="quarto-about-marquee content">
-  <div class="about-image-container">
-  </div>
-  <div class="about-contents">
-     <main class="content" id="quarto-document-content">
-<div id="ppc" style="color:#044875">
-<p>欢迎访问《R语言与统计应用课程》课程网站！</p>
-<p><a href="https://lizongzhang.github.io/stat24/" target="_blank">统计学课程网站</a></p>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">第3讲</h1>
 </div>
-<h3 style="color: #044875;">
-教学软件
-</h3>
-<ul>
-<li><p>R <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a></p></li>
-<li><p>R Studio <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p></li>
-</ul>
-<h3 style="color: #044875;">
-R语言与统计应用课前准备
-</h3>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1334y1y7U5/">R和R Studio的下载</a></p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1eR4y1V7uW/">R和RStudio的安装</a></p>
-<p>若无法安装R和R Studio, 请观看：</p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1zY4y1M7HX/">不用安装就能用的RStudio——RStudio Cloud</a></p>
-<h3 style="color: #044875;">
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<h1 style="color: #044875;">
+第3讲 R基础图形工具
+</h1>
+<p><img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat/base_graph_tool.html">讲义</a>{target = “_blank”}</p>
+<h3 style="color: #044875;" class="anchored">
 教学视频
 </h3>
-<ul>
-<li><a href="https://space.bilibili.com/590872906/channel/collectiondetail?sid=758271">R数据分析实战</a></li>
-</ul>
-<h3 style="color: #044875;">
-教学平台
+<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1iB4y1k7Ac/">R绘制直方图：hist函数的运用</a>{target = “_blank”}</p>
+<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV19X4y1D7Mm/">R 直方图中如何自定义组数和组距？</a>{target = “_blank”}</p>
+<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1MG4y1i7Yd/">箱线图 boxplot函数</a>{target = “_blank”}</p>
+<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1mV4y177EK/">R 条形图 barplot函数</a>{target = “_blank”}</p>
+<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/">散点图的绘制——R中的plot函数</a>{target = “_blank”}</p>
+<h3 style="color: #044875;" class="anchored">
+习题讲评
 </h3>
-<ul>
-<li><p>91速课(<a href="https://www.91suke.com" class="uri">https://www.91suke.com</a>)：发布作业，提交作业，测验，考勤等</p></li>
-<li><p><a href="https://lizongzhang.github.io/stat/91.html">在91速课中设置姓名和学号的方法</a></p></li>
-<li><p>QQ群：提交小组作业，提问答疑</p></li>
-</ul>
-<div style="text-align: center;">
-<img src="img/bili_up.jpg" class="img-fluid" style="width:10.0%">
-</div>
+<p><img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat/base_graph_tool.html">讲义</a>{target = “_blank”}{target = “_blank”}</p>
+<h3 style="color: #044875;" class="anchored">
+拓展资源
+</h3>
 
 
-</main> 
-    <div class="about-footer"><div class="about-links">
-  <a href="https://lizongzhang.github.io/stat24/" class="about-link" rel="" target="">
-    <i class="bi bi-globe2"></i>
-     <span class="about-link-text">统计学课程网站</span>
-  </a>
-  <a href="https://space.bilibili.com/590872906" class="about-link" rel="" target="">
-    <i class="bi bi-globe2"></i>
-     <span class="about-link-text">B站主页</span>
-  </a>
-  <a href="mailto:lizongzhang9@qq.com" class="about-link" rel="" target="">
-    <i class="bi bi-envelope"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-</div>
-</div>
-  </div>
-</div>
- <!-- /main -->
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -229,6 +215,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

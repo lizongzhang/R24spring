@@ -1,0 +1,51 @@
+---
+title: "第4讲"
+---
+
+<h1 style="color: #044875;"> 第3章 图表工具 </h1>
+
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[4.1 ggplot2 讲义](https://lizongzhang.github.io/stat/L4.html){target = "_blank"}
+
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[4.2 ggplot2
+        Script](https://lizongzhang.github.io/stat/ggplot2intro.html){target = "_blank"}
+
+<h3 style="color: #044875;"> 教学视频 </h3>
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[ggplot2绘制直方图](https://www.bilibili.com/video/BV1wV4y1K7eX/){target = "_blank"}
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[ggplot2如何在直方图上标注频数？](https://www.bilibili.com/video/BV1y24y1778a/){target = "_blank"}
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[ggplot2绘制条形图](https://www.bilibili.com/video/BV16e4y1Q7Qw/){target = "_blank"}
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[ggplot2如何在条形图上标注各组频数？](https://www.bilibili.com/video/BV1Ng4y1j7cE/){target = "_blank"}
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[ggplot2绘制帕累托图](https://www.bilibili.com/video/BV1ia411U74q/?){target = "_blank"}
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[ggplot2绘制箱线图](https://www.bilibili.com/video/BV1vW4y127dt/) {target = "_blank"}
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[ggplot2绘制散点图](https://www.bilibili.com/video/BV1Ca411K78j/){target = "_blank"}
+
+<h3 style="color: #044875;"> 习题答案 </h3>
+
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[第4讲习题答案代码](https://lizongzhang.github.io/stat/4solution.html){target = "_blank"}       
+
+<h3 style="color: #044875;"> 拓展资源 </h3>
+
+-   ggplot2 extensions - gallery <https://exts.ggplot2.tidyverse.org/gallery/>
+
+-   color codes <https://htmlcolorcodes.com>
+    
+-   Colors in R <http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf>
+
+-   Online Books
+
+    -   Wickham, Hadley. ggplot2: elegant graphics for data
+            analysis. springer, 2016. <https://ggplot2-book.org/>
+
+    -   Wickham, Hadley, Garrett Grolemund. R for Data Science
+            <https://r4ds.had.co.nz/>
+
+-   [第4讲 习题答案
+        Script](https://lizongzhang.github.io/stat/4solution.html)
+        
+        

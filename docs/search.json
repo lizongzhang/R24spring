@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "L8.html",
+    "href": "L8.html",
+    "title": "第8讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+  },
+  {
+    "objectID": "L1.html",
+    "href": "L1.html",
+    "title": "第1讲",
+    "section": "",
+    "text": "第1讲 R和R Studio简介\n\n讲义\n\n教学视频\n\nR Studio 主界面\n如何安装R扩展包\nRStudio如何导入EXCEL文件\nR Studio中的Project–如何高效管理数据、代码、图形\n\n拓展资源\n\n\nCRAN Task Views https://cran.r-project.org/web/views/\nMost Downloaded R Packages https://www.r-pkg.org/"
+  },
+  {
     "objectID": "projects.html#project-2",
     "href": "projects.html#project-2",
     "title": "Projects",
@@ -14,10 +28,73 @@
     "text": "Project 3"
   },
   {
+    "objectID": "L3.html",
+    "href": "L3.html",
+    "title": "第3讲",
+    "section": "",
+    "text": "第3讲 R基础图形工具\n\n讲义{target = “_blank”}\n\n教学视频\n\nR绘制直方图：hist函数的运用{target = “_blank”}\nR 直方图中如何自定义组数和组距？{target = “_blank”}\n箱线图 boxplot函数{target = “_blank”}\nR 条形图 barplot函数{target = “_blank”}\n散点图的绘制——R中的plot函数{target = “_blank”}\n\n习题讲评\n\n讲义{target = “_blank”}{target = “_blank”}\n\n拓展资源"
+  },
+  {
+    "objectID": "L6.html",
+    "href": "L6.html",
+    "title": "第6讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+  },
+  {
+    "objectID": "L5.html",
+    "href": "L5.html",
+    "title": "第5讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+  },
+  {
+    "objectID": "L10.html",
+    "href": "L10.html",
+    "title": "第10讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+  },
+  {
+    "objectID": "L11.html",
+    "href": "L11.html",
+    "title": "第11讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+  },
+  {
+    "objectID": "L4.html",
+    "href": "L4.html",
+    "title": "第4讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n4.1 ggplot2 讲义{target = “_blank”}\n4.2 ggplot2 Script{target = “_blank”}\n\n教学视频\n\nggplot2绘制直方图{target = “_blank”}\nggplot2如何在直方图上标注频数？{target = “_blank”}\nggplot2绘制条形图{target = “_blank”}\nggplot2如何在条形图上标注各组频数？{target = “_blank”}\nggplot2绘制帕累托图{target = “_blank”}\nggplot2绘制箱线图 {target = “_blank”}\nggplot2绘制散点图{target = “_blank”}\n\n习题答案\n\n第4讲习题答案代码{target = “_blank”}\n\n拓展资源\n\n\nggplot2 extensions - gallery https://exts.ggplot2.tidyverse.org/gallery/\ncolor codes https://htmlcolorcodes.com\nColors in R http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf\nOnline Books\n\nWickham, Hadley. ggplot2: elegant graphics for data analysis. springer, 2016. https://ggplot2-book.org/\nWickham, Hadley, Garrett Grolemund. R for Data Science https://r4ds.had.co.nz/\n\n第4讲 习题答案 Script"
+  },
+  {
+    "objectID": "L7.html",
+    "href": "L7.html",
+    "title": "第7讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+  },
+  {
+    "objectID": "L2.html",
+    "href": "L2.html",
+    "title": "第2讲",
+    "section": "",
+    "text": "第2讲 数据类型和结构\n\n\n讲义\nB站视频\n\nR的数据类型\nR的数据结构：向量和矩阵\nR的数据结构：数据框\nR的数据结构：列表list\n\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "About Me",
+    "title": "R语言与统计应用24春",
     "section": "",
-    "text": "Thanks for checking out my web site!"
+    "text": "欢迎访问《R语言与统计应用课程》课程网站！\n统计学课程网站\n\n\n教学软件\n\n\nR https://www.r-project.org/\nR Studio https://posit.co/download/rstudio-desktop/\n\n\nR语言与统计应用课前准备\n\nR和R Studio的下载\nR和RStudio的安装\n若无法安装R和R Studio, 请观看：\n不用安装就能用的RStudio——RStudio Cloud\n\n教学视频\n\n\nR数据分析实战\n\n\n教学平台\n\n\n91速课(https://www.91suke.com)：发布作业，提交作业，测验，考勤等\n在91速课中设置姓名和学号的方法\nQQ群：提交小组作业，提问答疑"
+  },
+  {
+    "objectID": "L9.html",
+    "href": "L9.html",
+    "title": "第9讲",
+    "section": "",
+    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
   }
 ]
