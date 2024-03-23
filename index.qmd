@@ -23,13 +23,13 @@ about:
 :::
 
 
-<h3 style="color: #044875;"> 教学软件</h3>
+## 教学软件
 
 - R  <https://www.r-project.org/>
 
 - R Studio <https://posit.co/download/rstudio-desktop/>
 
-<h3 style="color: #044875;"> R语言与统计应用课前准备 </h3>
+## R语言与统计应用课前准备
 
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R和R Studio的下载](https://www.bilibili.com/video/BV1334y1y7U5/)
 
@@ -41,7 +41,7 @@ about:
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[不用安装就能用的RStudio------RStudio
                 Cloud](https://www.bilibili.com/video/BV1zY4y1M7HX/)
 
-<h3 style="color: #044875;">教学视频</h3>
+## 教学视频
 
 - [R数据分析实战](https://space.bilibili.com/590872906/channel/collectiondetail?sid=758271)
 

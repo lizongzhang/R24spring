@@ -27,7 +27,7 @@ website:
     left: "&copy; Copyright 2024, Li Zongzhang"
 format:
   html:
-    theme: yeti
+    theme: [yeti, theme_light.scss]
     toc: true
 editor: source
 

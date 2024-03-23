@@ -11,7 +11,21 @@
     "href": "L1.html",
     "title": "第1讲",
     "section": "",
-    "text": "第1讲 R和R Studio简介\n\n讲义\n\n教学视频\n\nR Studio 主界面\n如何安装R扩展包\nRStudio如何导入EXCEL文件\nR Studio中的Project–如何高效管理数据、代码、图形\n\n拓展资源\n\n\nCRAN Task Views https://cran.r-project.org/web/views/\nMost Downloaded R Packages https://www.r-pkg.org/"
+    "text": "讲义\n\n\nR Studio 主界面\n如何安装R扩展包\nRStudio如何导入EXCEL文件\nR Studio中的Project–如何高效管理数据、代码、图形\n\n\n\n\nCRAN Task Views https://cran.r-project.org/web/views/\nMost Downloaded R Packages https://www.r-pkg.org/"
+  },
+  {
+    "objectID": "L1.html#教学视频",
+    "href": "L1.html#教学视频",
+    "title": "第1讲",
+    "section": "",
+    "text": "R Studio 主界面\n如何安装R扩展包\nRStudio如何导入EXCEL文件\nR Studio中的Project–如何高效管理数据、代码、图形"
+  },
+  {
+    "objectID": "L1.html#拓展资源",
+    "href": "L1.html#拓展资源",
+    "title": "第1讲",
+    "section": "",
+    "text": "CRAN Task Views https://cran.r-project.org/web/views/\nMost Downloaded R Packages https://www.r-pkg.org/"
   },
   {
     "objectID": "projects.html#project-2",
@@ -32,7 +46,21 @@
     "href": "L3.html",
     "title": "第3讲",
     "section": "",
-    "text": "第3讲 R基础图形工具\n\n讲义{target = “_blank”}\n\n教学视频\n\nR绘制直方图：hist函数的运用\nR 直方图中如何自定义组数和组距？\n箱线图 boxplot函数\nR 条形图 barplot函数\n散点图的绘制——R中的plot函数\n\n习题讲评\n\n讲义\n\n拓展资源"
+    "text": "讲义\n\n\nR绘制直方图：hist函数的运用\nR 直方图中如何自定义组数和组距？\n箱线图 boxplot函数\nR 条形图 barplot函数\n散点图的绘制——R中的plot函数\n\n\n\n讲义"
+  },
+  {
+    "objectID": "L3.html#教学视频",
+    "href": "L3.html#教学视频",
+    "title": "第3讲",
+    "section": "",
+    "text": "R绘制直方图：hist函数的运用\nR 直方图中如何自定义组数和组距？\n箱线图 boxplot函数\nR 条形图 barplot函数\n散点图的绘制——R中的plot函数"
+  },
+  {
+    "objectID": "L3.html#习题讲评",
+    "href": "L3.html#习题讲评",
+    "title": "第3讲",
+    "section": "",
+    "text": "讲义"
   },
   {
     "objectID": "L6.html",
@@ -46,7 +74,28 @@
     "href": "L5.html",
     "title": "第5讲",
     "section": "",
-    "text": "第3章 图表工具\n\n讲义\n\n教学视频\n\nExcel图表工具合集\nEXCEL数据清洗合集\n\n习题讲评\n\nExcel图表工具综合运用——基金经理\n教材第3章习题讲评\n\n拓展资源\n\n在线词云图工具 https://www.wordclouds.com/"
+    "text": "代码\n\n\n函数select()和mutate()\n函数if_else()对变量值进行条件转换\n函数filter()筛选个案\n如何删除含有缺失值的个案？\n\n\n\n\n\n第1题至第4题\n\n数据集：mpg {ggplot2}\n\n用select()函数从mpg提取5个变量⽣成新的数据框。\n用mutate()函数在数据框中追加新的变量，将油耗变量cty和hwy（miles per gallon）转换成转公里/升(kilometers per liter)的油耗指标。\n任选mpg中的某个变量，用if_else()函数对该变量的数值进⾏条件转换。\n设置三个筛选条件，用filter()函数从mpg筛选个案⽣成新的数据框。\n\n提交R script代码。\n\n\n\n\n第5讲习题答案"
+  },
+  {
+    "objectID": "L5.html#教学视频",
+    "href": "L5.html#教学视频",
+    "title": "第5讲",
+    "section": "",
+    "text": "函数select()和mutate()\n函数if_else()对变量值进行条件转换\n函数filter()筛选个案\n如何删除含有缺失值的个案？"
+  },
+  {
+    "objectID": "L5.html#本章习题",
+    "href": "L5.html#本章习题",
+    "title": "第5讲",
+    "section": "",
+    "text": "第1题至第4题\n\n数据集：mpg {ggplot2}\n\n用select()函数从mpg提取5个变量⽣成新的数据框。\n用mutate()函数在数据框中追加新的变量，将油耗变量cty和hwy（miles per gallon）转换成转公里/升(kilometers per liter)的油耗指标。\n任选mpg中的某个变量，用if_else()函数对该变量的数值进⾏条件转换。\n设置三个筛选条件，用filter()函数从mpg筛选个案⽣成新的数据框。\n\n提交R script代码。"
+  },
+  {
+    "objectID": "L5.html#习题答案",
+    "href": "L5.html#习题答案",
+    "title": "第5讲",
+    "section": "",
+    "text": "第5讲习题答案"
   },
   {
     "objectID": "L10.html",
@@ -81,14 +130,42 @@
     "href": "L2.html",
     "title": "第2讲",
     "section": "",
-    "text": "第2讲 数据类型和结构\n\n讲义\n\n教学视频\n\nR的数据类型\nR的数据结构：向量和矩阵\nR的数据结构：数据框\nR的数据结构：列表list\n\n习题讲评\n\n\n拓展资源"
+    "text": "讲义\n\n\nR的数据类型\nR的数据结构：向量和矩阵\nR的数据结构：数据框\nR的数据结构：列表list"
+  },
+  {
+    "objectID": "L2.html#教学视频",
+    "href": "L2.html#教学视频",
+    "title": "第2讲",
+    "section": "",
+    "text": "R的数据类型\nR的数据结构：向量和矩阵\nR的数据结构：数据框\nR的数据结构：列表list"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "R语言与统计应用24春",
     "section": "",
-    "text": "欢迎访问《R语言与统计应用课程》课程网站！\n统计学课程网站\n\n\n教学软件\n\n\nR https://www.r-project.org/\nR Studio https://posit.co/download/rstudio-desktop/\n\n\nR语言与统计应用课前准备\n\nR和R Studio的下载\nR和RStudio的安装\n若无法安装R和R Studio, 请观看：\n不用安装就能用的RStudio——RStudio Cloud\n\n教学视频\n\n\nR数据分析实战\n\n\n教学平台\n\n\n91速课(https://www.91suke.com)：发布作业，提交作业，测验，考勤等\n在91速课中设置姓名和学号的方法\nQQ群：提交小组作业，提问答疑"
+    "text": "欢迎访问《R语言与统计应用课程》课程网站！\n统计学课程网站"
+  },
+  {
+    "objectID": "index.html#教学软件",
+    "href": "index.html#教学软件",
+    "title": "R语言与统计应用24春",
+    "section": "教学软件",
+    "text": "教学软件\n\nR https://www.r-project.org/\nR Studio https://posit.co/download/rstudio-desktop/"
+  },
+  {
+    "objectID": "index.html#r语言与统计应用课前准备",
+    "href": "index.html#r语言与统计应用课前准备",
+    "title": "R语言与统计应用24春",
+    "section": "R语言与统计应用课前准备",
+    "text": "R语言与统计应用课前准备\nR和R Studio的下载\nR和RStudio的安装\n若无法安装R和R Studio, 请观看：\n不用安装就能用的RStudio——RStudio Cloud"
+  },
+  {
+    "objectID": "index.html#教学视频",
+    "href": "index.html#教学视频",
+    "title": "R语言与统计应用24春",
+    "section": "教学视频",
+    "text": "教学视频\n\nR数据分析实战\n\n\n教学平台\n\n\n91速课(https://www.91suke.com)：发布作业，提交作业，测验，考勤等\n在91速课中设置姓名和学号的方法\nQQ群：提交小组作业，提问答疑"
   },
   {
     "objectID": "L9.html",

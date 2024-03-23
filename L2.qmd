@@ -2,11 +2,11 @@
 title: "第2讲"
 ---
 
-<h1 style="color: #044875;"> 第2讲 数据类型和结构 </h1>
+# 第2讲 数据类型和结构
 
 <img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义](https://lizongzhang.github.io/stat/base_graph_tool.html){target="_blank"}
 
-<h3 style="color: #044875;"> 教学视频 </h3>
+## 教学视频
 
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R的数据类型](https://www.bilibili.com/video/BV1UL4y157kL/){target="_blank"}
 
@@ -16,7 +16,7 @@ title: "第2讲"
 
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R的数据结构：列表list](https://www.bilibili.com/video/BV1Tr4y1H7ga/){target="_blank"}
 
-<h3 style="color: #044875;"> 习题讲评 </h3>
+## 习题讲评
 
-<h3 style="color: #044875;"> 拓展资源 </h3>
+## 拓展资源
 
