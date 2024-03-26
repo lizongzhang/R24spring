@@ -18,7 +18,7 @@ website:
       - L8.qmd
       - L9.qmd      
       - L10.qmd
-      - L10.qmd
+      - L11.qmd
     tools:
       - icon: envelope
         href: lizongzhang9@qq.com
@@ -29,5 +29,6 @@ format:
   html:
     theme: [yeti, theme_light.scss]
     toc: true
+    number_sections: true
 editor: source
 

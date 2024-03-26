@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -132,8 +166,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">第10讲</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./L10.html"> 
-<span class="menu-text">第10讲</span></a>
+    <a class="nav-link" href="./L11.html"> 
+<span class="menu-text">第11讲</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -186,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="第5讲-数据管理" class="level1">
 <h1>第5讲 数据管理</h1>
-<p><img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat/5dplyr.html" target="_blank">代码</a></p>
+<p><img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat24/script5.html" target="_blank">代码</a></p>
 <section id="教学视频" class="level2">
 <h2 class="anchored" data-anchor-id="教学视频">教学视频</h2>
 <p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1XZ4y127rc/" target="_blank">函数select()和mutate()</a></p>
@@ -198,24 +232,4132 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="本章习题">本章习题</h2>
 <details>
 <summary>
-第1题至第4题
+第1题至第#题
 </summary>
-<p>数据集：mpg {ggplot2}</p>
-<ol type="1">
-<li><p>用select()函数从mpg提取5个变量⽣成新的数据框。</p></li>
-<li><p>用mutate()函数在数据框中追加新的变量，将油耗变量cty和hwy（miles per gallon）转换成转公里/升(kilometers per liter)的油耗指标。</p></li>
-<li><p>任选mpg中的某个变量，用if_else()函数对该变量的数值进⾏条件转换。</p></li>
-<li><p>设置三个筛选条件，用filter()函数从mpg筛选个案⽣成新的数据框。</p></li>
-</ol>
+<p>第1题：数据 mpg {ggplot2}</p>
+<p>1.1 用select()函数从mpg提取5个变量⽣成新的数据框。</p>
+<p>1.2 用mutate()函数在数据框中追加新的变量，将油耗变量cty和hwy（miles per gallon）转换成转公里/升(kilometers per liter)的油耗指标。</p>
+<p>1.3 任选mpg中的某个变量，用if_else()函数对该变量的数值进⾏条件转换。</p>
+<p>1.4 设置三个筛选条件，用filter()函数从mpg筛选个案⽣成新的数据框。</p>
 <p>提交R script代码。</p>
-<details>
-</details></details></section>
+</details></section>
 <section id="习题答案" class="level2">
 <h2 class="anchored" data-anchor-id="习题答案">习题答案</h2>
-<p><img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat/5solution.html" target="_blank">第5讲习题答案</a></p>
-</section>
+<details>
+<summary>
+第1题
+</summary>
+<p>第1题</p>
+<div class="cell" data-messsage="false">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>1.1 用select()函数从mpg提取5个变量⽣成新的数据框。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(gt)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mpg)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer<span class="sc">:</span>cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="co">#查看前6行</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  manufacturer model displ  year   cyl
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+1 audi         a4      1.8  1999     4
+2 audi         a4      1.8  1999     4
+3 audi         a4      2    2008     4
+4 audi         a4      2    2008     4
+5 audi         a4      2.8  1999     6
+6 audi         a4      2.8  1999     6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  manufacturer model displ  year   cyl
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+1 audi         a4      1.8  1999     4
+2 audi         a4      1.8  1999     4
+3 audi         a4      2    2008     4
+4 audi         a4      2    2008     4
+5 audi         a4      2.8  1999     6
+6 audi         a4      2.8  1999     6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+   year   cyl drv     cty   hwy
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+1  1999     4 f        18    29
+2  1999     4 f        21    29
+3  2008     4 f        20    31
+4  2008     4 f        21    30
+5  1999     6 f        16    26
+6  1999     6 f        18    26</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year,cyl,drv<span class="sc">:</span>hwy) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+   year   cyl drv     cty   hwy
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+1  1999     4 f        18    29
+2  1999     4 f        21    29
+3  2008     4 f        20    31
+4  2008     4 f        21    30
+5  1999     6 f        16    26
+6  1999     6 f        18    26</code></pre>
+</div>
+</div>
+<p>1.2 用mutate()函数在数据框中追加新的变量，将油耗变量cty和hwy（miles per gallon）转换成转公里/升(kilometers per liter)的油耗指标。(1 miles per gallon = 0.425 kilometers per liter)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mpgnew <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cty.kpl =</span> <span class="fl">0.425</span><span class="sc">*</span>cty, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">hwy.kpl =</span> <span class="fl">0.425</span><span class="sc">*</span>hwy)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpgnew) <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="ybkvyizrfp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ybkvyizrfp table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ybkvyizrfp thead, #ybkvyizrfp tbody, #ybkvyizrfp tfoot, #ybkvyizrfp tr, #ybkvyizrfp td, #ybkvyizrfp th {
+  border-style: none;
+}
+
+#ybkvyizrfp p {
+  margin: 0;
+  padding: 0;
+}
+
+#ybkvyizrfp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ybkvyizrfp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ybkvyizrfp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ybkvyizrfp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ybkvyizrfp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ybkvyizrfp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ybkvyizrfp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ybkvyizrfp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ybkvyizrfp .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ybkvyizrfp .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ybkvyizrfp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ybkvyizrfp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ybkvyizrfp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ybkvyizrfp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ybkvyizrfp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ybkvyizrfp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ybkvyizrfp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ybkvyizrfp .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ybkvyizrfp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ybkvyizrfp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ybkvyizrfp .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ybkvyizrfp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ybkvyizrfp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ybkvyizrfp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ybkvyizrfp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ybkvyizrfp .gt_left {
+  text-align: left;
+}
+
+#ybkvyizrfp .gt_center {
+  text-align: center;
+}
+
+#ybkvyizrfp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ybkvyizrfp .gt_font_normal {
+  font-weight: normal;
+}
+
+#ybkvyizrfp .gt_font_bold {
+  font-weight: bold;
+}
+
+#ybkvyizrfp .gt_font_italic {
+  font-style: italic;
+}
+
+#ybkvyizrfp .gt_super {
+  font-size: 65%;
+}
+
+#ybkvyizrfp .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ybkvyizrfp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ybkvyizrfp .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ybkvyizrfp .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ybkvyizrfp .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ybkvyizrfp .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ybkvyizrfp .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th id="trans" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">trans</th>
+<th id="drv" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drv</th>
+<th id="cty" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty</th>
+<th id="hwy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy</th>
+<th id="fl" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fl</th>
+<th id="class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">class</th>
+<th id="cty.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty.kpl</th>
+<th id="hwy.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy.kpl</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m6)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">20</td>
+<td class="gt_row gt_right" headers="hwy">31</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.500</td>
+<td class="gt_row gt_right" headers="hwy.kpl">13.175</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">30</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.750</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">16</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="cty.kpl">6.800</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mpg<span class="sc">$</span>hwy.kpl <span class="ot">&lt;-</span> <span class="fl">0.425</span><span class="sc">*</span>mpg<span class="sc">$</span>hwy</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mpg<span class="sc">$</span>cty.kpl <span class="ot">&lt;-</span> <span class="fl">0.425</span><span class="sc">*</span>mpg<span class="sc">$</span>cty</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg) <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="geyjnkeaky" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#geyjnkeaky table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#geyjnkeaky thead, #geyjnkeaky tbody, #geyjnkeaky tfoot, #geyjnkeaky tr, #geyjnkeaky td, #geyjnkeaky th {
+  border-style: none;
+}
+
+#geyjnkeaky p {
+  margin: 0;
+  padding: 0;
+}
+
+#geyjnkeaky .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#geyjnkeaky .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#geyjnkeaky .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#geyjnkeaky .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#geyjnkeaky .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#geyjnkeaky .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#geyjnkeaky .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#geyjnkeaky .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#geyjnkeaky .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#geyjnkeaky .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#geyjnkeaky .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#geyjnkeaky .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#geyjnkeaky .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#geyjnkeaky .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#geyjnkeaky .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#geyjnkeaky .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#geyjnkeaky .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#geyjnkeaky .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#geyjnkeaky .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#geyjnkeaky .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#geyjnkeaky .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#geyjnkeaky .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#geyjnkeaky .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#geyjnkeaky .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#geyjnkeaky .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#geyjnkeaky .gt_left {
+  text-align: left;
+}
+
+#geyjnkeaky .gt_center {
+  text-align: center;
+}
+
+#geyjnkeaky .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#geyjnkeaky .gt_font_normal {
+  font-weight: normal;
+}
+
+#geyjnkeaky .gt_font_bold {
+  font-weight: bold;
+}
+
+#geyjnkeaky .gt_font_italic {
+  font-style: italic;
+}
+
+#geyjnkeaky .gt_super {
+  font-size: 65%;
+}
+
+#geyjnkeaky .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#geyjnkeaky .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#geyjnkeaky .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#geyjnkeaky .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#geyjnkeaky .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#geyjnkeaky .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#geyjnkeaky .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th id="trans" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">trans</th>
+<th id="drv" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drv</th>
+<th id="cty" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty</th>
+<th id="hwy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy</th>
+<th id="fl" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fl</th>
+<th id="class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">class</th>
+<th id="hwy.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy.kpl</th>
+<th id="cty.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty.kpl</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m6)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">20</td>
+<td class="gt_row gt_right" headers="hwy">31</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">13.175</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.500</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">30</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.750</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">16</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+<td class="gt_row gt_right" headers="cty.kpl">6.800</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>1.3 任选mpg中的某个变量，用if_else()函数对该变量的数值进⾏条件转换。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mpgnew <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">transmission =</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">if_else</span>(<span class="fu">substring</span>(trans, <span class="dv">1</span>,<span class="dv">4</span>) <span class="sc">==</span> <span class="st">"auto"</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"auto"</span>,<span class="st">"manual"</span>))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpgnew) <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="whfasqbntk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#whfasqbntk table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#whfasqbntk thead, #whfasqbntk tbody, #whfasqbntk tfoot, #whfasqbntk tr, #whfasqbntk td, #whfasqbntk th {
+  border-style: none;
+}
+
+#whfasqbntk p {
+  margin: 0;
+  padding: 0;
+}
+
+#whfasqbntk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#whfasqbntk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#whfasqbntk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#whfasqbntk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#whfasqbntk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#whfasqbntk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#whfasqbntk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#whfasqbntk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#whfasqbntk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#whfasqbntk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#whfasqbntk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#whfasqbntk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#whfasqbntk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#whfasqbntk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#whfasqbntk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#whfasqbntk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#whfasqbntk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#whfasqbntk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#whfasqbntk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#whfasqbntk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#whfasqbntk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#whfasqbntk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#whfasqbntk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#whfasqbntk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#whfasqbntk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#whfasqbntk .gt_left {
+  text-align: left;
+}
+
+#whfasqbntk .gt_center {
+  text-align: center;
+}
+
+#whfasqbntk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#whfasqbntk .gt_font_normal {
+  font-weight: normal;
+}
+
+#whfasqbntk .gt_font_bold {
+  font-weight: bold;
+}
+
+#whfasqbntk .gt_font_italic {
+  font-style: italic;
+}
+
+#whfasqbntk .gt_super {
+  font-size: 65%;
+}
+
+#whfasqbntk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#whfasqbntk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#whfasqbntk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#whfasqbntk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#whfasqbntk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#whfasqbntk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#whfasqbntk .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th id="trans" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">trans</th>
+<th id="drv" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drv</th>
+<th id="cty" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty</th>
+<th id="hwy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy</th>
+<th id="fl" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fl</th>
+<th id="class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">class</th>
+<th id="hwy.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy.kpl</th>
+<th id="cty.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty.kpl</th>
+<th id="transmission" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">transmission</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m6)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">20</td>
+<td class="gt_row gt_right" headers="hwy">31</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">13.175</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.500</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">30</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.750</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">16</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+<td class="gt_row gt_right" headers="cty.kpl">6.800</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#二值转换 if_else</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mpg<span class="sc">$</span>transmission <span class="ot">&lt;-</span> <span class="fu">if_else</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">substring</span>(mpg<span class="sc">$</span>trans, <span class="dv">1</span>,<span class="dv">4</span>) <span class="sc">==</span> <span class="st">"auto"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"auto"</span>,<span class="st">"manual"</span>) </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#多值转换 case_when</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>mpg<span class="sc">$</span>drive <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  mpg<span class="sc">$</span>drv <span class="sc">==</span> <span class="st">"f"</span> <span class="sc">~</span> <span class="st">"front-wheel"</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  mpg<span class="sc">$</span>drv <span class="sc">==</span> <span class="st">"r"</span> <span class="sc">~</span> <span class="st">"rear-wheel"</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  mpg<span class="sc">$</span>drv <span class="sc">==</span> <span class="st">"4"</span> <span class="sc">~</span> <span class="st">"four-wheel"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg) <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="mlnkwhlfgv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mlnkwhlfgv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mlnkwhlfgv thead, #mlnkwhlfgv tbody, #mlnkwhlfgv tfoot, #mlnkwhlfgv tr, #mlnkwhlfgv td, #mlnkwhlfgv th {
+  border-style: none;
+}
+
+#mlnkwhlfgv p {
+  margin: 0;
+  padding: 0;
+}
+
+#mlnkwhlfgv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mlnkwhlfgv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mlnkwhlfgv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mlnkwhlfgv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mlnkwhlfgv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mlnkwhlfgv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mlnkwhlfgv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mlnkwhlfgv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mlnkwhlfgv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mlnkwhlfgv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mlnkwhlfgv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mlnkwhlfgv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mlnkwhlfgv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mlnkwhlfgv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mlnkwhlfgv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mlnkwhlfgv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mlnkwhlfgv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mlnkwhlfgv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mlnkwhlfgv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mlnkwhlfgv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mlnkwhlfgv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mlnkwhlfgv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mlnkwhlfgv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mlnkwhlfgv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mlnkwhlfgv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mlnkwhlfgv .gt_left {
+  text-align: left;
+}
+
+#mlnkwhlfgv .gt_center {
+  text-align: center;
+}
+
+#mlnkwhlfgv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mlnkwhlfgv .gt_font_normal {
+  font-weight: normal;
+}
+
+#mlnkwhlfgv .gt_font_bold {
+  font-weight: bold;
+}
+
+#mlnkwhlfgv .gt_font_italic {
+  font-style: italic;
+}
+
+#mlnkwhlfgv .gt_super {
+  font-size: 65%;
+}
+
+#mlnkwhlfgv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mlnkwhlfgv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mlnkwhlfgv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mlnkwhlfgv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mlnkwhlfgv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mlnkwhlfgv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mlnkwhlfgv .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th id="trans" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">trans</th>
+<th id="drv" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drv</th>
+<th id="cty" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty</th>
+<th id="hwy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy</th>
+<th id="fl" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fl</th>
+<th id="class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">class</th>
+<th id="hwy.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy.kpl</th>
+<th id="cty.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty.kpl</th>
+<th id="transmission" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">transmission</th>
+<th id="drive" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drive</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m6)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">20</td>
+<td class="gt_row gt_right" headers="hwy">31</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">13.175</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.500</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">30</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.750</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">16</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+<td class="gt_row gt_right" headers="cty.kpl">6.800</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">manual(m5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>1.4 设置三个筛选条件，用filter()函数从mpg筛选个案⽣成新的数据框。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the &amp; operator is used to combine two conditions, where both conditions must be true for a row to be included in the filtered data frame.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">"suv"</span> <span class="sc">&amp;</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>           cyl <span class="sc">==</span> <span class="dv">8</span> <span class="sc">&amp;</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>          year <span class="sc">==</span> <span class="dv">2008</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="wszyozcepf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wszyozcepf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wszyozcepf thead, #wszyozcepf tbody, #wszyozcepf tfoot, #wszyozcepf tr, #wszyozcepf td, #wszyozcepf th {
+  border-style: none;
+}
+
+#wszyozcepf p {
+  margin: 0;
+  padding: 0;
+}
+
+#wszyozcepf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wszyozcepf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wszyozcepf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wszyozcepf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wszyozcepf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wszyozcepf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wszyozcepf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wszyozcepf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wszyozcepf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wszyozcepf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wszyozcepf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wszyozcepf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wszyozcepf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wszyozcepf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wszyozcepf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wszyozcepf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wszyozcepf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wszyozcepf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wszyozcepf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wszyozcepf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wszyozcepf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wszyozcepf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wszyozcepf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wszyozcepf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wszyozcepf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wszyozcepf .gt_left {
+  text-align: left;
+}
+
+#wszyozcepf .gt_center {
+  text-align: center;
+}
+
+#wszyozcepf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wszyozcepf .gt_font_normal {
+  font-weight: normal;
+}
+
+#wszyozcepf .gt_font_bold {
+  font-weight: bold;
+}
+
+#wszyozcepf .gt_font_italic {
+  font-style: italic;
+}
+
+#wszyozcepf .gt_super {
+  font-size: 65%;
+}
+
+#wszyozcepf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wszyozcepf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wszyozcepf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wszyozcepf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wszyozcepf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wszyozcepf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wszyozcepf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th id="trans" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">trans</th>
+<th id="drv" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drv</th>
+<th id="cty" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty</th>
+<th id="hwy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy</th>
+<th id="fl" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fl</th>
+<th id="class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">class</th>
+<th id="hwy.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy.kpl</th>
+<th id="cty.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty.kpl</th>
+<th id="transmission" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">transmission</th>
+<th id="drive" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drive</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">chevrolet</td>
+<td class="gt_row gt_left" headers="model">c1500 suburban 2wd</td>
+<td class="gt_row gt_right" headers="displ">5.3</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_left" headers="trans">auto(l4)</td>
+<td class="gt_row gt_left" headers="drv">r</td>
+<td class="gt_row gt_right" headers="cty">14</td>
+<td class="gt_row gt_right" headers="hwy">20</td>
+<td class="gt_row gt_left" headers="fl">r</td>
+<td class="gt_row gt_left" headers="class">suv</td>
+<td class="gt_row gt_right" headers="hwy.kpl">8.500</td>
+<td class="gt_row gt_right" headers="cty.kpl">5.950</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">rear-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">chevrolet</td>
+<td class="gt_row gt_left" headers="model">c1500 suburban 2wd</td>
+<td class="gt_row gt_right" headers="displ">5.3</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_left" headers="trans">auto(l4)</td>
+<td class="gt_row gt_left" headers="drv">r</td>
+<td class="gt_row gt_right" headers="cty">11</td>
+<td class="gt_row gt_right" headers="hwy">15</td>
+<td class="gt_row gt_left" headers="fl">e</td>
+<td class="gt_row gt_left" headers="class">suv</td>
+<td class="gt_row gt_right" headers="hwy.kpl">6.375</td>
+<td class="gt_row gt_right" headers="cty.kpl">4.675</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">rear-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">chevrolet</td>
+<td class="gt_row gt_left" headers="model">c1500 suburban 2wd</td>
+<td class="gt_row gt_right" headers="displ">5.3</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_left" headers="trans">auto(l4)</td>
+<td class="gt_row gt_left" headers="drv">r</td>
+<td class="gt_row gt_right" headers="cty">14</td>
+<td class="gt_row gt_right" headers="hwy">20</td>
+<td class="gt_row gt_left" headers="fl">r</td>
+<td class="gt_row gt_left" headers="class">suv</td>
+<td class="gt_row gt_right" headers="hwy.kpl">8.500</td>
+<td class="gt_row gt_right" headers="cty.kpl">5.950</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">rear-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">chevrolet</td>
+<td class="gt_row gt_left" headers="model">c1500 suburban 2wd</td>
+<td class="gt_row gt_right" headers="displ">6.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_left" headers="trans">auto(l4)</td>
+<td class="gt_row gt_left" headers="drv">r</td>
+<td class="gt_row gt_right" headers="cty">12</td>
+<td class="gt_row gt_right" headers="hwy">17</td>
+<td class="gt_row gt_left" headers="fl">r</td>
+<td class="gt_row gt_left" headers="class">suv</td>
+<td class="gt_row gt_right" headers="hwy.kpl">7.225</td>
+<td class="gt_row gt_right" headers="cty.kpl">5.100</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">rear-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">chevrolet</td>
+<td class="gt_row gt_left" headers="model">k1500 tahoe 4wd</td>
+<td class="gt_row gt_right" headers="displ">5.3</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_left" headers="trans">auto(l4)</td>
+<td class="gt_row gt_left" headers="drv">4</td>
+<td class="gt_row gt_right" headers="cty">14</td>
+<td class="gt_row gt_right" headers="hwy">19</td>
+<td class="gt_row gt_left" headers="fl">r</td>
+<td class="gt_row gt_left" headers="class">suv</td>
+<td class="gt_row gt_right" headers="hwy.kpl">8.075</td>
+<td class="gt_row gt_right" headers="cty.kpl">5.950</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">four-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">chevrolet</td>
+<td class="gt_row gt_left" headers="model">k1500 tahoe 4wd</td>
+<td class="gt_row gt_right" headers="displ">5.3</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_left" headers="trans">auto(l4)</td>
+<td class="gt_row gt_left" headers="drv">4</td>
+<td class="gt_row gt_right" headers="cty">11</td>
+<td class="gt_row gt_right" headers="hwy">14</td>
+<td class="gt_row gt_left" headers="fl">e</td>
+<td class="gt_row gt_left" headers="class">suv</td>
+<td class="gt_row gt_right" headers="hwy.kpl">5.950</td>
+<td class="gt_row gt_right" headers="cty.kpl">4.675</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">four-wheel</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(trans, <span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">==</span> <span class="st">"auto"</span> <span class="sc">&amp;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        class <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"compact"</span>, <span class="st">"subcompact"</span>) <span class="sc">&amp;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!</span>fl <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"c"</span> ,<span class="st">"d"</span> ,<span class="st">"e"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="dkbbkihygw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dkbbkihygw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dkbbkihygw thead, #dkbbkihygw tbody, #dkbbkihygw tfoot, #dkbbkihygw tr, #dkbbkihygw td, #dkbbkihygw th {
+  border-style: none;
+}
+
+#dkbbkihygw p {
+  margin: 0;
+  padding: 0;
+}
+
+#dkbbkihygw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dkbbkihygw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dkbbkihygw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dkbbkihygw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dkbbkihygw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dkbbkihygw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dkbbkihygw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dkbbkihygw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dkbbkihygw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dkbbkihygw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dkbbkihygw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dkbbkihygw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dkbbkihygw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dkbbkihygw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dkbbkihygw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkbbkihygw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dkbbkihygw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dkbbkihygw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dkbbkihygw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkbbkihygw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dkbbkihygw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkbbkihygw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dkbbkihygw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkbbkihygw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dkbbkihygw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkbbkihygw .gt_left {
+  text-align: left;
+}
+
+#dkbbkihygw .gt_center {
+  text-align: center;
+}
+
+#dkbbkihygw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dkbbkihygw .gt_font_normal {
+  font-weight: normal;
+}
+
+#dkbbkihygw .gt_font_bold {
+  font-weight: bold;
+}
+
+#dkbbkihygw .gt_font_italic {
+  font-style: italic;
+}
+
+#dkbbkihygw .gt_super {
+  font-size: 65%;
+}
+
+#dkbbkihygw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dkbbkihygw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dkbbkihygw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dkbbkihygw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dkbbkihygw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dkbbkihygw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dkbbkihygw .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th id="trans" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">trans</th>
+<th id="drv" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drv</th>
+<th id="cty" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty</th>
+<th id="hwy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy</th>
+<th id="fl" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fl</th>
+<th id="class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">class</th>
+<th id="hwy.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy.kpl</th>
+<th id="cty.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty.kpl</th>
+<th id="transmission" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">transmission</th>
+<th id="drive" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drive</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">29</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.325</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">30</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.750</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">16</td>
+<td class="gt_row gt_right" headers="hwy">26</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.050</td>
+<td class="gt_row gt_right" headers="cty.kpl">6.800</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">3.1</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">27</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.475</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4 quattro</td>
+<td class="gt_row gt_right" headers="displ">1.8</td>
+<td class="gt_row gt_right" headers="year">1999</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(l5)</td>
+<td class="gt_row gt_left" headers="drv">4</td>
+<td class="gt_row gt_right" headers="cty">16</td>
+<td class="gt_row gt_right" headers="hwy">25</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">10.625</td>
+<td class="gt_row gt_right" headers="cty.kpl">6.800</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">four-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4 quattro</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(s6)</td>
+<td class="gt_row gt_left" headers="drv">4</td>
+<td class="gt_row gt_right" headers="cty">19</td>
+<td class="gt_row gt_right" headers="hwy">27</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.475</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.075</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">four-wheel</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the | operator combines the two conditions, where only one of the conditions needs to be true for a row to be included in the filtered data frame.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">"suv"</span> <span class="sc">|</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>           cyl <span class="sc">==</span> <span class="dv">8</span> <span class="sc">|</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>          year <span class="sc">==</span> <span class="dv">2008</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="cgyeotmpxl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cgyeotmpxl table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cgyeotmpxl thead, #cgyeotmpxl tbody, #cgyeotmpxl tfoot, #cgyeotmpxl tr, #cgyeotmpxl td, #cgyeotmpxl th {
+  border-style: none;
+}
+
+#cgyeotmpxl p {
+  margin: 0;
+  padding: 0;
+}
+
+#cgyeotmpxl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cgyeotmpxl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cgyeotmpxl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cgyeotmpxl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cgyeotmpxl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cgyeotmpxl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cgyeotmpxl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cgyeotmpxl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cgyeotmpxl .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cgyeotmpxl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cgyeotmpxl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cgyeotmpxl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cgyeotmpxl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cgyeotmpxl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cgyeotmpxl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cgyeotmpxl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cgyeotmpxl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cgyeotmpxl .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cgyeotmpxl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cgyeotmpxl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cgyeotmpxl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cgyeotmpxl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cgyeotmpxl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cgyeotmpxl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cgyeotmpxl .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cgyeotmpxl .gt_left {
+  text-align: left;
+}
+
+#cgyeotmpxl .gt_center {
+  text-align: center;
+}
+
+#cgyeotmpxl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cgyeotmpxl .gt_font_normal {
+  font-weight: normal;
+}
+
+#cgyeotmpxl .gt_font_bold {
+  font-weight: bold;
+}
+
+#cgyeotmpxl .gt_font_italic {
+  font-style: italic;
+}
+
+#cgyeotmpxl .gt_super {
+  font-size: 65%;
+}
+
+#cgyeotmpxl .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cgyeotmpxl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cgyeotmpxl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cgyeotmpxl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cgyeotmpxl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cgyeotmpxl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cgyeotmpxl .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th id="trans" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">trans</th>
+<th id="drv" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drv</th>
+<th id="cty" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty</th>
+<th id="hwy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy</th>
+<th id="fl" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">fl</th>
+<th id="class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">class</th>
+<th id="hwy.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hwy.kpl</th>
+<th id="cty.kpl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cty.kpl</th>
+<th id="transmission" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">transmission</th>
+<th id="drive" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">drive</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m6)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">20</td>
+<td class="gt_row gt_right" headers="hwy">31</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">13.175</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.500</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">21</td>
+<td class="gt_row gt_right" headers="hwy">30</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">12.750</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.925</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4</td>
+<td class="gt_row gt_right" headers="displ">3.1</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(av)</td>
+<td class="gt_row gt_left" headers="drv">f</td>
+<td class="gt_row gt_right" headers="cty">18</td>
+<td class="gt_row gt_right" headers="hwy">27</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.475</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.650</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">front-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4 quattro</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">manual(m6)</td>
+<td class="gt_row gt_left" headers="drv">4</td>
+<td class="gt_row gt_right" headers="cty">20</td>
+<td class="gt_row gt_right" headers="hwy">28</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.900</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.500</td>
+<td class="gt_row gt_left" headers="transmission">manual</td>
+<td class="gt_row gt_left" headers="drive">four-wheel</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4 quattro</td>
+<td class="gt_row gt_right" headers="displ">2.0</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_left" headers="trans">auto(s6)</td>
+<td class="gt_row gt_left" headers="drv">4</td>
+<td class="gt_row gt_right" headers="cty">19</td>
+<td class="gt_row gt_right" headers="hwy">27</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">11.475</td>
+<td class="gt_row gt_right" headers="cty.kpl">8.075</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">four-wheel</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="manufacturer">audi</td>
+<td class="gt_row gt_left" headers="model">a4 quattro</td>
+<td class="gt_row gt_right" headers="displ">3.1</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_left" headers="trans">auto(s6)</td>
+<td class="gt_row gt_left" headers="drv">4</td>
+<td class="gt_row gt_right" headers="cty">17</td>
+<td class="gt_row gt_right" headers="hwy">25</td>
+<td class="gt_row gt_left" headers="fl">p</td>
+<td class="gt_row gt_left" headers="class">compact</td>
+<td class="gt_row gt_right" headers="hwy.kpl">10.625</td>
+<td class="gt_row gt_right" headers="cty.kpl">7.225</td>
+<td class="gt_row gt_left" headers="transmission">auto</td>
+<td class="gt_row gt_left" headers="drive">four-wheel</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</details></section>
 <section id="拓展资源" class="level2">
 <h2 class="anchored" data-anchor-id="拓展资源">拓展资源</h2>
+<p>R for Data Science 2nd edition, Chap 5 Data Tydying <a href="https://r4ds.hadley.nz/data-tidy" class="uri">https://r4ds.hadley.nz/data-tidy</a></p>
 
 
 </section>

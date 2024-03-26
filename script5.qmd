@@ -1,0 +1,425 @@
+---
+title: "第5讲 tidyverse"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-float:
+      collapsed: true
+      smooth-scroll: true
+      toc-position: right
+    number-sections: true
+    highlight-style: github
+    code-block-border-left: "#4f6952"
+    code-block-bg: true
+date: today
+---
+
+"Tidy datasets are all alike, but every messy dataset is messy in its own way." --- Hadley Wickham
+
+ref: [R for Data Science](https://r4ds.hadley.nz/)
+
+# 什么是tidy data？
+
+```{r}
+#| echo: true
+library(tidyverse)
+```
+
+```{r}
+
+table1
+
+table2
+
+table3
+```
+
+tidydata的特点：
+
+-   每个变量是一列；每列是一个变量。
+
+-   每个观察结果是一行；每行是一个观察结果。
+
+-   每个值是一个单元格；每个单元格是一个单一值。
+
+![](https://r4ds.hadley.nz/images/tidy-1.png) 为什么要确保你的数据整洁？
+
+-   如果你有一个一致的数据结构，学习与之配合的工具就更容易，因为它们具有底层的统一性。
+
+-   将变量放在列中, 发挥R的向量化特性，大多数内置的R函数都是与向量一起工作的。
+
+# 如何查看数据？
+
+```{r}
+#install.packages("nycflights13")
+library(nycflights13)
+data(flights)
+
+flights #查看数据
+
+View(flights) #查看数据
+
+glimpse(flights) #查看数据结构
+```
+
+```{r}
+```
+
+int 是整数的简写
+
+dbl 是双精度浮点数（也称为实数）的简写
+
+chr 代表字符（也称为字符串）
+
+dttm 用于日期时间
+
+# dplyr函数
+
+## dplyr函数的共性
+
+第1项参数是data frame.
+
+第2项参数描述动作。
+
+输出结果是一个新的data frame.
+
+## dplyr函数的分类
+
+-   列的管理 Columns:
+    -   `select()` changes whether or not a column is included.
+    -   `rename()` changes the name of columns.
+    -   `mutate()` changes the values of columns and creates new columns.
+    -   `relocate()` changes the order of the columns.
+-   行的管理 Rows:
+    -   `filter()` chooses rows based on column values.
+    -   `slice()` chooses rows based on location.
+    -   `arrange()` changes the order of the rows.
+-   行组的管理Groups of rows:
+    -   `summarise()` collapses a group into a single row.
+    -   `count()`
+    -   `top_n()`
+
+## Rows
+
+### 保留filter()
+
+```{r}
+flights %>%  
+  filter(dep_delay > 120) #保留dep_delay大于120的行
+```
+
+
+\>=（大于或等于）
+
+\<（小于）
+
+\<=（小于或等于）
+
+\==（等于）
+
+\!=（不等于）
+
+\& 或 or, 来表示"和"（同时检查两个条件）
+
+\| 来表示"或"（检查任一条件）
+
+```{r}
+flights %>% 
+  filter(month == 1 & day == 1) #筛选出1月1日的航班
+
+flights %>%
+  filter(month == 1 | month == 2) #筛选出1月或2月的航班
+
+flights %>%
+  filter(month %in% c(1, 2)) #筛选出1月或2月的航班
+
+```
+
+**注意：当你运行 filter() 时，dplyr 执行过滤操作，创建一个新的数据框，然后打印它。它不会修改现有的 flights 数据集，因为 dplyr 函数永远不会修改它们的输入。要保存结果，你需要使用赋值操作符，<-**
+
+```{r}
+#筛选出1月1日的航班,并保存到flights_jan1
+flights_jan1 <- flights %>% 
+  filter(month == 1 & day == 1) 
+```
+
+**常见错误**
+
+```{r}
+# flights %>% 
+#   filter(month = 1) #错误，应该用==而不是=
+
+```
+
+```{r}
+# flights %>%
+#    filter(month == 1 | 2)  #错误，应该用month == 1 | month == 2
+
+```
+
+
+### 排序arange()
+
+```{r}
+flights %>% 
+  arrange(year, month, day, dep_time) #按照year, month, day, dep_time排序
+```
+
+```{r}
+flights %>% 
+  arrange(desc(dep_delay)) #按照dep_time降序排序
+
+```
+
+
+### 去重distinct()
+
+```{r}
+flights %>% 
+  distinct() #去重
+```
+```{r}
+flights %>% 
+  distinct(year, month, day) #按照year, month, day去重
+
+flights %>% 
+  distinct(origin, dest) #按照origin, dest去重
+
+```
+
+### 缺失值is.na()
+
+```{r}
+flights %>% 
+  filter(is.na(dep_time)) #保留dep_time为NA的行
+
+flights %>% 
+  filter(!is.na(dep_time)) #保留dep_time为NA的行
+
+```
+
+
+### 删除有缺失值的行na.omit()/drop_na()
+
+```{r}
+flights %>% 
+  na.omit() #删除含有NA的行
+
+flights %>%
+  drop_na(dep_time, arr_time) #删除dep_time, arr_time为NA的行
+ 
+
+```
+
+
+## Columns
+
+### 追加变量mutate()
+
+```{r}
+flights %>% 
+  mutate(
+    gain = dep_delay - arr_delay, #计算gain
+    speed = air_time / distance * 60) #计算飞行速度
+
+```
+
+```{r}
+flights %>% 
+  mutate(
+    gain = dep_delay - arr_delay, #计算gain
+    speed = air_time / distance * 60,
+    .before = 1) #将gain和speed放在第1列,第2列
+
+flights %>% 
+  mutate(
+    gain = dep_delay - arr_delay, #计算gain
+    speed = air_time / distance * 60,
+    .after = day) #将gain和speed放在day列后
+```
+
+注意：当你运行 mutate() 时，dplyr 执行追加变量，创建一个新的数据框，然后打印它。它不会修改现有的 flights 数据集，因为 dplyr函数永远不会修改它们的输入。要保存结果，你需要使用赋值操作符，<-
+
+
+### 选择变量select()
+
+```{r}
+flights %>% 
+  select(year, month, day) #选择year, month, day列
+
+flights %>% 
+  select(year:day) #选择year到day列
+
+flights %>%
+  select(year:day, ends_with("delay")) #选择year到day列和以delay结尾的列
+
+flights %>%
+  select(!year:day) #选择除year到day列之外的列
+
+flights %>%
+  select(where(is.character)) #选择类型是字符串的列
+
+```
+There are a number of helper functions you can use within select():
+
+starts_with("abc"): matches names that begin with “abc”.
+
+ends_with("xyz"): matches names that end with “xyz”.
+
+contains("ijk"): matches names that contain “ijk”.
+
+num_range("x", 1:3): matches x1, x2 and x3.
+
+### 重命名变量rename()
+
+```{r}
+flights %>% 
+  rename(tail_num = tailnum) #将tailnum列重命名为tail_num
+```
+
+
+### 二值转换if_else()
+```{r}
+flights %>%
+  mutate(season = if_else(month %in% c(6, 7, 8), "summer", "non-summer"))
+
+```
+
+
+### 多值转换case_when()
+
+```{r}
+flights |> 
+  mutate(
+    status = case_when(
+      is.na(arr_delay)      ~ "cancelled", #如果arr_delay为NA,则status为cancelled
+      arr_delay < -30       ~ "very early",
+      arr_delay < -15       ~ "early",
+      abs(arr_delay) <= 15  ~ "on time",
+      arr_delay < 60        ~ "late",
+      arr_delay < Inf       ~ "very late",
+    ),
+    .keep = "used" #保留arr_delay列
+  )
+```
+
+
+
+### 重新编码recode()
+
+```{r}
+# recode()函数 旧值 = 新值
+flights %>%
+  mutate(season = recode(month,
+                         `1` = "Winter", `2` = "Winter", `12` = "Winter", 
+                         `3` = "Spring", `4` = "Spring", `5` = "Spring",
+                         `6` = "Summer", `7` = "Summer", `8` = "Summer",
+                         `9` = "Fall", `10` = "Fall", `11` = "Fall"))
+```
+
+
+
+
+### 前置变量relocate()
+
+```{r}
+flights %>% 
+  relocate(time_hour, air_time) #将time_hour, air_time放到最前面
+
+```
+
+## The pipe
+
+```{r}
+flights |> 
+  filter(dest == "IAH") |> 
+  mutate(speed = distance / air_time * 60) |> 
+  select(year:day, dep_time, carrier, flight, speed) |> 
+  arrange(desc(speed))
+```
+
+
+## Groups
+
+### group_by()
+
+```{r}
+flights %>% 
+  group_by(month) #按照month分组
+```
+group_by() 不会改变数据，但输出显示它是按“月份”分组的。这意味着随后的操作现在将“按月”进行。group_by() 为数据框添加了这个分组特征，这改变了随后应用于数据的动作。
+
+
+
+
+
+
+### summarize()
+
+
+```{r}
+flights %>% 
+  group_by(month) %>% 
+  summarise(avg_delay = mean(dep_delay)) #按照month分组，计算dep_delay的均值
+```
+NA: missing value
+
+当向量中有NA，mean()函数默认返回NA，如果想忽略NA值，可以使用na.rm = TRUE
+
+
+```{r}
+flights %>% 
+  group_by(month) %>% 
+  summarise(avg_delay = mean(dep_delay, na.rm = TRUE), #na.rm = TRUE表示忽略NA值
+            n = n()
+  ) #按照month分组，计算dep_delay的均值和n
+```
+
+```{r}
+# 统计每天的航班数量
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarise(n = n(),
+            .groups = "drop") #按照year, month, day分组，计算n
+```
+### .by
+
+```{r}
+
+flights %>% 
+  summarize(delay = mean(dep_delay, na.rm = TRUE),
+            n = n(),
+            .by = month 
+  ) #按月份分组，计算dep_delay的均值和n
+
+flights %>% 
+  summarize(ave_delay = mean(dep_delay, na.rm = TRUE),
+            n = n(),
+            .by = c(origin, dest)
+  ) %>% #按出发地和目的地分组，计算dep_delay的均值和n
+  arrange(ave_delay) #按ave_delay排序
+
+```
+
+
+
+习题2
+
+根据distance数值，将航班分为短途、中途和长途三个类别。创建新变量distance_grou,其值为"short", "medium", "long", 将其追加到flights。统计每个类别的航班数量。
+
+```{r}
+短途飞行（Short-haul flight）：飞行距离少于500英里的航班。
+中途飞行（Medium-haul flight）：飞行距离在500到1,550英里之间的航班。
+长途飞行（Long-haul flight）：飞行距离超过1,550英里的航班。
+
+
+
+
+
+
+
+
+
+
+
