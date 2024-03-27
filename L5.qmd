@@ -3,7 +3,7 @@ title: "第5讲"
 ---
 # 第5讲 数据管理
 
-<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[代码](https://lizongzhang.github.io/stat24/script5.html){target="_blank"}
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[代码](https://lizongzhang.github.io/r24/script5.html){target="_blank"}
 
 ## 教学视频
 
@@ -19,7 +19,7 @@ title: "第5讲"
 ## 本章习题
 
 <details>
-  <summary>第1题至第#题</summary>
+  <summary>第1题至第2题</summary>
 
 第1题：数据 mpg {ggplot2}
 
@@ -33,6 +33,21 @@ title: "第5讲"
 1.4  设置三个筛选条件，用filter()函数从mpg筛选个案⽣成新的数据框。
 
 提交R script代码。
+
+习题2 :数据nycflights13::flights
+
+2.1 根据distance的远近，将航班分为短途、中途和长途三个类别。创建新变量distance_group,其值为"short", "medium", "long"。统计每个类别的航班数量。
+
+短途飞行（Short-haul flight）：飞行距离少于500英里的航班。
+
+中途飞行（Medium-haul flight）：飞行距离在500到1,550英里之间的航班。
+
+长途飞行（Long-haul flight）：飞行距离超过1,550英里的航班
+
+2.2 如果你想尽可能避免延误，你应该选择哪个时间段起飞的航班？
+
+2.3 哪个航空公司(carrier)的航班平均延误时间最长？
+
 
 
 ## 习题答案
@@ -157,6 +172,11 @@ mpg %>%
 ## 拓展资源 
 
 
-R for Data Science 2nd edition, Chap 5 Data Tydying <https://r4ds.hadley.nz/data-tidy>
+R for Data Science 2nd edition <https://r4ds.hadley.nz/data-tidy>
+
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R如何快速预览变量分布？summarytools::dfSummary()](https://www.bilibili.com/video/BV1yj411t71t/){target="_blank"}
+
+
 
 

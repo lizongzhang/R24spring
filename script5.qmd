@@ -1,5 +1,6 @@
 ---
 title: "第5讲 tidyverse"
+author: "Li Zongzhang"
 format:
   html:
     toc: true
@@ -18,6 +19,18 @@ date: today
 "Tidy datasets are all alike, but every messy dataset is messy in its own way." --- Hadley Wickham
 
 ref: [R for Data Science](https://r4ds.hadley.nz/)
+
+```{r}
+# install.packages("nycflights13")
+# install.packages("dlookr")
+# install.packages("flextable")
+
+library(nycflights13)
+library(dlookr)
+library(flextable)
+
+```
+
 
 # 什么是tidy data？
 
@@ -52,7 +65,7 @@ tidydata的特点：
 # 如何查看数据？
 
 ```{r}
-#install.packages("nycflights13")
+
 library(nycflights13)
 data(flights)
 
@@ -61,10 +74,12 @@ flights #查看数据
 View(flights) #查看数据
 
 glimpse(flights) #查看数据结构
+
+head(flights) #查看前6行
+
+tail(flights) #查看后6行
 ```
 
-```{r}
-```
 
 int 是整数的简写
 
@@ -73,6 +88,27 @@ dbl 是双精度浮点数（也称为实数）的简写
 chr 代表字符（也称为字符串）
 
 dttm 用于日期时间
+
+
+```{r}
+library(dlookr)
+library(flextable)
+
+diagnose(flights) %>% 
+  flextable()
+
+diagnose_numeric(flights) %>% 
+  flextable()
+
+diagnose_category(flights) %>% 
+  flextable()
+
+```
+
+
+
+
+
 
 # dplyr函数
 
@@ -86,15 +122,23 @@ dttm 用于日期时间
 
 ## dplyr函数的分类
 
--   列的管理 Columns:
-    -   `select()` changes whether or not a column is included.
-    -   `rename()` changes the name of columns.
-    -   `mutate()` changes the values of columns and creates new columns.
-    -   `relocate()` changes the order of the columns.
 -   行的管理 Rows:
     -   `filter()` chooses rows based on column values.
-    -   `slice()` chooses rows based on location.
     -   `arrange()` changes the order of the rows.
+    -   `distinct()` removes duplicate rows.
+    -    `na.omit()` removes rows with missing values.
+    -    `drop.na()` removes rows with missing values.
+    -   `slice()` chooses rows based on location.
+
+
+-   列的管理 Columns:
+    -   `mutate()` changes the values of columns and creates new columns.
+    -   `select()` changes whether or not a column is included.
+    -   `rename()` changes the name of columns.
+    -   `if_else()` changes the values of columns based on a condition.
+    -   `case_when()` changes the values of columns based on multiple conditions.
+    -   `recode()` changes the values of columns based on a condition.
+    -   `relocate()` changes the order of the columns.
 -   行组的管理Groups of rows:
     -   `summarise()` collapses a group into a single row.
     -   `count()`
@@ -404,14 +448,7 @@ flights %>%
 
 
 
-习题2
 
-根据distance数值，将航班分为短途、中途和长途三个类别。创建新变量distance_grou,其值为"short", "medium", "long", 将其追加到flights。统计每个类别的航班数量。
-
-```{r}
-短途飞行（Short-haul flight）：飞行距离少于500英里的航班。
-中途飞行（Medium-haul flight）：飞行距离在500到1,550英里之间的航班。
-长途飞行（Long-haul flight）：飞行距离超过1,550英里的航班。
 
 
 

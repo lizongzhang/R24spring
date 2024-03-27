@@ -2,22 +2,29 @@
 title: "第6讲"
 ---
 
-<h1 style="color: #044875;"> 第3章 图表工具 </h1>
+# 第6讲 描述统计与三大分布
 
-<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义](https://lizongzhang.github.io/stat/chap3.html)
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义6.1 描述统计量的计算](https://lizongzhang.github.io/stat/R6.1.html)
 
-<h3 style="color: #044875;"> 教学视频 </h3>
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义6.1 绘制概率密度曲线](https://lizongzhang.github.io/stat/R6.2.html)
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具合集](https://www.bilibili.com/video/BV1uK4y1X752/)
+## 教学视频 
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[EXCEL数据清洗合集](https://www.bilibili.com/video/BV1uc41177Mn/)
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R描述统计量的批量计算describe函数](https://www.bilibili.com/video/BV1PF411N74S/)
 
-<h3 style="color: #044875;"> 习题讲评 </h3>
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R计算分位数quantile函数](https://www.bilibili.com/video/BV1GN4y177GK/)
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具综合运用——基金经理](https://www.bilibili.com/video/BV1UJ4m1b7Lb/)
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[利用R绘制正态分布概率密度曲线](https://www.bilibili.com/video/BV1vr4y1L75F/)
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[教材第3章习题讲评](https://www.bilibili.com/video/BV1t3411W7V9/)
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R中rchisq函数和for循环的应用------不同自由度下的卡方分布比较](https://www.bilibili.com/video/BV1ga411T7vS/)
 
-<h3 style="color: #044875;"> 拓展资源 </h3>
+## 习题答案 
 
-在线词云图工具 <https://www.wordclouds.com/>
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[第6讲习题答案Script](https://lizongzhang.github.io/stat/6solution.html)
+
+## 拓展资源 
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R如何快速预览变量分布？summarytools::dfSummary()](https://www.bilibili.com/video/BV1yj411t71t/)
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R描述统计输出结果的表格化及导出到word文档](https://www.bilibili.com/video/BV1WN411w7wd/)
+
