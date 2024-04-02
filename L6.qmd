@@ -79,3 +79,8 @@ title: "第6讲"
 
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R描述统计输出结果的表格化及导出到word文档](https://www.bilibili.com/video/BV1WN411w7wd/)
 
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R 如何快速诊断数据的缺失值异常值和分布特征? ](https://www.bilibili.com/video/BV1yz421f7Uh/)
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R如何快速考察数据分布？批量绘制条形图、直方图、箱线图、QQ图](https://www.bilibili.com/video/BV1Mx4y1m7mT/)
+
+

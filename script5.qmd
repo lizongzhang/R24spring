@@ -10,6 +10,7 @@ format:
       collapsed: true
       smooth-scroll: true
       toc-position: right
+      include-css: style.css
     number-sections: true
     highlight-style: haddock
     code-block-border-left: "#31BAE9"
@@ -28,19 +29,12 @@ Ref: [Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for data sci
 #| message: false
 
 # install.packages("nycflights13")
-# install.packages("dlookr")
-# install.packages("flextable")
 # install.packages("tidyverse")
 
 library(nycflights13)
-library(dlookr)
-library(flextable)
 library(tidyverse)
 
 ```
-
-
-
 
 # 什么是tidy data？
 
@@ -70,7 +64,7 @@ table3
 
 # 如何查看数据？
 
-## View()/glimpse()/head()/tail()
+View()/glimpse()/head()/tail()
 
 ```{r}
 library(nycflights13)
@@ -86,36 +80,23 @@ head(flights) #查看前6行
 tail(flights) #查看后6行
 ```
 
-int 整数 integer
+-   int 整数 integer
 
-dbl 双精度浮点数 bouble (实数)
+-   dbl 双精度浮点数 bouble (实数)
 
-chr 字符串
+-   chr 字符串
 
-dttm 日期时间
-
-## dlookr::diagose()
-
-```{r}
-diagnose(flights) %>% flextable::flextable()
-
-
-diagnose_numeric(flights) %>% flextable::flextable()
-
-diagnose_category(flights, carrier, origin ,dest) %>%
-  flextable::flextable()
-```   
-
+-   dttm 日期时间
 
 # dplyr函数
 
 ## dplyr函数的共性
 
-第1项参数是data frame.
+-   第1项参数是data frame.
 
-第2项参数描述动作。
+-   第2项参数描述动作。
 
-输出结果是一个新的data frame.
+-   输出结果是一个新的data frame.
 
 ## dplyr函数的分类
 
@@ -123,11 +104,9 @@ diagnose_category(flights, carrier, origin ,dest) %>%
     -   `filter()` chooses rows based on column values.
     -   `arrange()` changes the order of the rows.
     -   `distinct()` removes duplicate rows.
-    -    `na.omit()` removes rows with missing values.
-    -    `drop.na()` removes rows with missing values.
+    -   `na.omit()` removes rows with missing values.
+    -   `drop.na()` removes rows with missing values.
     -   `slice()` chooses rows based on location.
-
-
 -   列的管理 Columns:
     -   `mutate()` changes the values of columns and creates new columns.
     -   `select()` changes whether or not a column is included.
@@ -145,29 +124,24 @@ diagnose_category(flights, carrier, origin ,dest) %>%
 
 ### 保留filter()
 
-
-
 ```{r}
 flights %>%  
   filter(dep_delay > 120) #保留dep_delay大于120的行
 ```
 
+-   \>=（大于或等于）
 
+-   \<（小于）
 
-\>=（大于或等于）
+-   \<=（小于或等于）
 
-\<（小于）
+-   ==（等于）
 
-\<=（小于或等于）
+-   !=（不等于）
 
-\==（等于）
+-   & 条件组合，同时成立
 
-\!=（不等于）
-
-\& 条件组合，同时成立
-
-\| "或"，至少有一个条件成立
-
+-   \| "或"，至少有一个条件成立
 
 ```{r}
 flights %>% 
@@ -181,7 +155,7 @@ flights %>%
 
 ```
 
-**注意：当你运行 filter() 时，dplyr 执行过滤操作，创建一个新的数据框，然后打印它。它不会修改现有的 flights 数据集，因为 dplyr 函数永远不会修改它们的输入。要保存结果，你需要使用赋值操作符，<-**
+**注意：当你运行 filter() 时，dplyr 执行过滤操作，创建一个新的数据框，然后打印它。它不会修改现有的 flights 数据集，因为 dplyr 函数永远不会修改它们的输入。要保存结果，你需要使用赋值操作符，\<-**
 
 ```{r}
 #筛选出1月1日的航班,并保存到flights_jan1
@@ -203,7 +177,6 @@ flights_jan1 <- flights %>%
 
 ```
 
-
 ### 排序arange()
 
 ```{r}
@@ -213,9 +186,10 @@ flights %>%
 
 ```{r}
 flights %>% 
-  arrange(desc(dep_delay)) #按照dep_time降序排序
+  arrange(desc(dep_delay)) #desc()按照dep_time降序排序
 
 ```
+
 ### 删除有缺失值的行na.omit()/drop_na()
 
 ```{r}
@@ -225,7 +199,6 @@ flights %>%
 flights %>%
   drop_na(dep_time, arr_time) #删除dep_time, arr_time为NA的行
  
-
 ```
 
 ### 去重distinct()
@@ -234,6 +207,7 @@ flights %>%
 flights %>% 
   distinct() #移除所有列都相同的行
 ```
+
 ```{r}
 flights %>% 
   distinct(year, month, day) #提取year, month, day 的唯一组合
@@ -258,9 +232,62 @@ flights %>%
 
 ```
 
+### 小练习
 
+第1题: 将满足下列条件的航班筛选出来，保存为一个新的数据框christmas_jfk, 该数据框中一共有多少个航班？
 
+1.  航班出发日期为2013年12月24日.
 
+2.  出发地(origin)机场是"JFK".
+
+John F. Kennedy International Airport, JFK
+
+LaGuardia Airport, LGA
+
+Newark Liberty International Airport, EWR
+
+3.  航空公司(carrier)是"AA",或者"UA", 或者"US".
+
+AA, American Airlines.
+
+UA, United Airlines
+
+US, US Airways
+
+4.  将到达延误时长(arr_delay)中有缺失值的行剔除
+
+第2题: 按照到达延误时长(arr_delay)降序排列航班
+
+第3题: 绘制数据框christmas_jfk中出发时间(dep_time)和到达延误时长(arr_delay)的散点图，散点的颜色用航空公司(carrier)来映射, 散点的大小用飞行距离来映射。
+
+<details>
+
+<summary>code</summary>
+
+```{r}
+christmas_jfk <- flights %>% 
+  filter(year == 2013 & month == 12 & day == 24 & origin == "JFK" ) %>%
+  filter(carrier %in% c("AA", "UA", "US")) %>% 
+  drop_na(arr_delay) %>% 
+  arrange(desc(arr_delay))
+
+christmas_jfk
+
+nrow(christmas_jfk)
+
+christmas_jfk %>% 
+  ggplot(aes(dep_time, arr_delay, col = carrier, size = distance)) + 
+  geom_point(alpha = 0.5)
+
+flights %>%
+  filter(year == 2013, month == 12, day == 24, 
+         origin == "JFK", carrier %in% c("AA", "UA", "US")) %>%
+  drop_na(arr_delay) %>% 
+  arrange(desc(arr_delay)) %>% 
+  ggplot(aes(dep_time, arr_delay, col = carrier, size = distance)) + 
+  geom_point(alpha = 0.5)
+  
+```
 
 ## Columns
 
@@ -295,8 +322,7 @@ flights %>%
 
 当运行mutate() 时，追加变量，console中显示了追加的结果，但不会修改现有的数据框。
 
-要保存这个新的数据框，需要将其赋值<-。
-
+要保存这个新的数据框，需要将其赋值\<-。
 
 ### 选择变量select()
 
@@ -317,19 +343,18 @@ flights %>%
   select(where(is.character)) #选择类型是字符串的列
 
 ```
+
 There are a number of helper functions you can use within select():
 
-starts_with("abc"): matches names that begin with “abc”.
+starts_with("abc"): matches names that begin with "abc".
 
-ends_with("xyz"): matches names that end with “xyz”.
+ends_with("xyz"): matches names that end with "xyz".
 
-contains("ijk"): matches names that contain “ijk”.
+contains("ijk"): matches names that contain "ijk".
 
 num_range("x", 1:3): matches x1, x2 and x3.
 
 ### 重命名变量rename()
-
-
 
 ```{r}
 flights %>% 
@@ -342,15 +367,14 @@ mydata <- flights %>%
 
 ```
 
-
 ### 二值转换if_else()
+
 ```{r}
 flights %>%
   mutate(season = if_else(month %in% c(6, 7, 8), "summer", "non-summer")) %>%
   relocate(season, .before = month) #将season列放在month列前
 
 ```
-
 
 ### 多值转换case_when()
 
@@ -367,7 +391,6 @@ flights  %>%
     ),
     .after = arr_delay) #将status列放在arr_delay列后
 ```
-
 
 ### 重新编码recode()
 
@@ -413,9 +436,6 @@ flights %>%
                           "YV" = "Mesa Airlines"),
          .after = carrier)
 ```
-
-
-
 
 ### 前置变量relocate()
 
@@ -478,7 +498,6 @@ flights <- flights %>%
 flights 
 ```
 
-
 ## Groups
 
 ### group_by()
@@ -487,21 +506,20 @@ flights
 flights %>% 
   group_by(month) #按照month分组
 ```
-group_by() 不会改变数据，但输出显示它是按“月份”分组的。这意味着随后的操作现在将“按月”进行。group_by() 为数据框添加了这个分组特征，这改变了随后应用于数据的动作。
 
+group_by() 不会改变数据，但输出显示它是按"月份"分组的。这意味着随后的操作现在将"按月"进行。group_by() 为数据框添加了这个分组特征，这改变了随后应用于数据的动作。
 
 ### summarize()
-
 
 ```{r}
 flights %>% 
   group_by(month) %>% 
   summarise(mean_delay = mean(dep_delay)) #按照month分组，计算dep_delay的均值
 ```
+
 NA: missing value
 
 当向量中有NA，mean()函数默认返回NA，如果想忽略NA值，可以使用na.rm = TRUE
-
 
 ```{r}
 flights %>% 
@@ -526,6 +544,7 @@ flights %>%
             ) 
 
 ```
+
 ### .by
 
 ```{r}
@@ -558,18 +577,3 @@ flights %>%
   arrange(desc(mean_delay)) #按mean_delay降序
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
