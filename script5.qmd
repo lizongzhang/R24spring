@@ -33,7 +33,6 @@ Ref: [Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for data sci
 
 library(nycflights13)
 library(tidyverse)
-
 ```
 
 # 什么是tidy data？
@@ -256,7 +255,7 @@ US, US Airways
 
 4.  将到达延误时长(arr_delay)中有缺失值的行剔除
 
-第2题: 按照到达延误时长(arr_delay)降序排列航班
+第2题: 对数据框christmas_jfk, 按照到达延误时长(arr_delay)降序排列航班
 
 第3题: 绘制数据框christmas_jfk中出发时间(dep_time)和到达延误时长(arr_delay)的散点图，散点的颜色用航空公司(carrier)来映射, 散点的大小用飞行距离来映射。
 
@@ -271,7 +270,7 @@ christmas_jfk <- flights %>%
   drop_na(arr_delay) %>% 
   arrange(desc(arr_delay))
 
-christmas_jfk
+christmas_jfk %>% print(width = Inf)
 
 nrow(christmas_jfk)
 
@@ -346,13 +345,13 @@ flights %>%
 
 There are a number of helper functions you can use within select():
 
-starts_with("abc"): matches names that begin with "abc".
+-   starts_with("abc"): matches names that begin with "abc".
 
-ends_with("xyz"): matches names that end with "xyz".
+-   ends_with("xyz"): matches names that end with "xyz".
 
-contains("ijk"): matches names that contain "ijk".
+-   contains("ijk"): matches names that contain "ijk".
 
-num_range("x", 1:3): matches x1, x2 and x3.
+-   num_range("x", 1:3): matches x1, x2 and x3.
 
 ### 重命名变量rename()
 
@@ -445,16 +444,98 @@ flights %>%
 
 ```
 
+### 小练习
+
+第1题：将出发地(origin)是"JFK"机场的航班筛选出来, 创建数据框jfk_flights, 在该数据框中追加如下变量：
+
+1. 追加新变量distance_group。根据distance(单位：英里)的数值，将航班分为短途、中途和长途三类。 distance_group值为"short", "medium", "long"。distance_group与distance的对应关系如下：
+
+- 短途飞行（Short-haul flight）：飞行距离少于500英里的航班。
+
+- 中途飞行（Medium-haul flight）：飞行距离在500到1,550英里之间的航班。
+
+- 长途飞行（Long-haul flight）：飞行距离超过1,550英里的航班
+
+2. 追加新变量status。若arr_delay的值为缺失值，则status等于cancelled，若arr_delay的值不是缺失值，则status等于normal。
+
+3. 追加新变量month_name，将month的值转换为月份的英文名称，例如1转换为January，2转换为February，以此类推。
+
+第2题：绘制出第1题中得到的数据框jfk_flights中航班数量的条形图，横坐标为月份的英文名称，纵坐标为航班数量。
+
+第3题：绘制出第1题中得到的数据框jfk_flights中每个月份的取消/正常航班数量的条形图，横坐标为月份的英文名称，纵坐标为航班数量。
+
+<details>
+
+<summary>code</summary>
+
+```{r}
+# 筛选出发地为"JFK"的航班
+jfk_flights <- flights %>% 
+  filter(origin == "JFK")
+
+# 追加新变量distance_group, status和month_name
+jfk_flights <- jfk_flights %>%
+  mutate(
+    distance_group = case_when(
+      distance < 500 ~ "short",
+      distance >= 500 & distance <= 1550 ~ "medium",
+      distance > 1550 ~ "long"
+    ),
+    status = if_else(is.na(arr_delay), "cancelled", "normal"),
+    month_name = month.abb[month],  # 使用内置的月份缩写向量month.abb
+    .after = day  # 将新变量放在day列后
+  )
+
+jfk_flights
+
+# 将month_name转换为有序因子，确保月份按自然顺序排序
+jfk_flights$month_name <- factor(jfk_flights$month_name, 
+                                    levels = month.abb, 
+                                    ordered = TRUE)
+
+# 绘制柱状图
+ggplot(jfk_flights, aes(x = month_name, fill = month_name)) +
+  geom_bar() +
+  xlab("Month") +
+  ylab("Number of Flights") +
+  ggtitle("Number of Flights from JFK by Month") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # 优化x轴标签显示
+
+# 绘制帕累托图
+ggplot(jfk_flights, aes(x = fct_infreq(month_name), fill = month_name)) +
+  geom_bar() +
+  xlab("Month") +
+  ylab("Number of Flights") +
+  ggtitle("Number of Flights from JFK by Month") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # 优化x轴标签显示
+
+# 绘制柱状图
+ggplot(jfk_flights, aes(x = month_name, fill = month_name)) +
+  geom_bar() +
+  facet_wrap( ~ status, scales = "free_y") +  # 按status分面，y轴自由缩放
+  xlab("Month") +
+  ylab("Number of Flights") +
+  ggtitle("Number of Flights from JFK by Month") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # 优化x轴标签显示
+
+
+```
+
+
+
 ## The pipe
 
-### 合并追加变量的代码,并保存到flights
+合并追加变量的代码,并保存到flights_new数据框中
 
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
 #追加gain, status, quarter和company
 
-flights <- flights %>% 
+flights_new <- flights %>% 
   mutate(
     gain = arr_delay - dep_delay,
     speed = distance / air_time * 60,
@@ -495,7 +576,7 @@ flights <- flights %>%
                           "YV" = "Mesa Airlines"),
          .after = carrier) 
 
-flights 
+flights_new 
 ```
 
 ## Groups
@@ -531,11 +612,9 @@ flights %>%
 
 ```{r}
 # 统计每天的航班数量
-
 flights %>% 
   group_by(year, month, day) %>% 
   summarise(n = n()) #生成的数据框是一个有分组结构的数据框
-
 
 flights %>% 
   group_by(year, month, day) %>% 
@@ -577,3 +656,76 @@ flights %>%
   arrange(desc(mean_delay)) #按mean_delay降序
 
 ```
+
+
+### 小练习
+
+第1题：如果你想尽可能避免延误，你应该选择哪个时间段起飞的航班？
+
+第2题：哪三家航空公司(carrier)的平均延误时间(arr_delay)最长？
+
+第3题：哪个月份的平均延误时间(arr_delay)最长？
+
+第4题：讲延误时间(arr_delay)超过15分钟的定义为延误航班。 计算各个月份的延误航班的比例，并按比例降序排列。
+
+第5题：讲延误时间(arr_delay)超过15分钟的定义为延误航班。 计算各个航空公司(carrier)的延误航班的比例，并按各航空公司航班数量降序排列。
+
+第6题：从JFK机场出发(origin)的航班中，航班数量最多的5家航空公司是哪些？并统计出其航班数量？
+
+<details>
+
+<summary>code</summary>
+
+```{r}
+# 第1题
+flights %>%
+  group_by(hour) %>%
+  summarise(avg_arr_delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(avg_arr_delay) %>% 
+  print(n = Inf)
+
+# 第2题
+flights %>%
+  group_by(carrier) %>%
+  summarise(avg_arr_delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(desc(avg_arr_delay)) %>%
+  top_n(3, avg_arr_delay)
+
+# 第3题
+flights %>%
+  group_by(month) %>%
+  summarise(avg_arr_delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(desc(avg_arr_delay)) 
+
+# 第4题
+flights %>%
+  mutate(is_delayed = arr_delay > 15) %>%
+  group_by(month) %>%
+  summarise(
+    total_flights = n(),
+    delayed_flights = sum(is_delayed, na.rm = TRUE),
+    delay_proportion = delayed_flights / total_flights
+  ) %>%
+  arrange(desc(delay_proportion)) 
+
+# 第5题
+flights %>%
+  mutate(is_delayed = arr_delay > 15) %>%
+  group_by(carrier) %>%
+  summarise(
+    total_flights = n(),
+    delayed_flights = sum(is_delayed, na.rm = TRUE),
+    delay_proportion = delayed_flights / total_flights
+  ) %>%
+  arrange(desc(total_flights)) 
+
+# 第6题
+flights %>%
+  filter(origin == "JFK") %>%
+  group_by(carrier) %>%
+  summarise(number_of_flights = n()) %>%
+  arrange(desc(number_of_flights)) %>%
+  top_n(5, number_of_flights) 
+
+```
+

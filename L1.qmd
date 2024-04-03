@@ -18,7 +18,8 @@ title: "第1讲"
 
 ## 拓展资源
 
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">CRAN Task Views <https://cran.r-project.org/web/views/>
 
--   CRAN Task Views <https://cran.r-project.org/web/views/>
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">Most Downloaded R Packages <https://www.r-pkg.org/>
 
--   Most Downloaded R Packages <https://www.r-pkg.org/>
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">RStudio Cloud <https://rstudio.cloud/>

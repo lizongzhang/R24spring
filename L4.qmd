@@ -42,16 +42,16 @@ title: "第4讲"
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[不写代码也能绘制ggplot图形的R插件 ggplot2 builder](https://www.bilibili.com/video/BV1Yj41147bB/){target="_blank"} 
 
 
--   ggplot2 extensions - gallery <https://exts.ggplot2.tidyverse.org/gallery/>
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">ggplot2 extensions - gallery <https://exts.ggplot2.tidyverse.org/gallery/>
 
--   color codes <https://htmlcolorcodes.com>
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">color codes <https://htmlcolorcodes.com>
     
--   Colors in R <http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf>
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">Colors in R <http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf>
 
--   Wickham, Hadley. ggplot2: elegant graphics for data
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">Wickham, Hadley. ggplot2: elegant graphics for data
             analysis. springer, 2016. <https://ggplot2-book.org/>
 
--   Wickham, Hadley, Garrett Grolemund. R for Data Science
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">Wickham, Hadley, Garrett Grolemund. R for Data Science
             <https://r4ds.had.co.nz/>
             
             

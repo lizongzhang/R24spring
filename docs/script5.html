@@ -212,16 +212,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#多值转换case_when" id="toc-多值转换case_when" class="nav-link" data-scroll-target="#多值转换case_when"><span class="header-section-number">3.4.5</span> 多值转换case_when()</a></li>
   <li><a href="#重新编码recode" id="toc-重新编码recode" class="nav-link" data-scroll-target="#重新编码recode"><span class="header-section-number">3.4.6</span> 重新编码recode()</a></li>
   <li><a href="#前置变量relocate" id="toc-前置变量relocate" class="nav-link" data-scroll-target="#前置变量relocate"><span class="header-section-number">3.4.7</span> 前置变量relocate()</a></li>
+  <li><a href="#小练习-1" id="toc-小练习-1" class="nav-link" data-scroll-target="#小练习-1"><span class="header-section-number">3.4.8</span> 小练习</a></li>
   </ul></li>
-  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe"><span class="header-section-number">3.5</span> The pipe</a>
-  <ul class="collapse">
-  <li><a href="#合并追加变量的代码并保存到flights" id="toc-合并追加变量的代码并保存到flights" class="nav-link" data-scroll-target="#合并追加变量的代码并保存到flights"><span class="header-section-number">3.5.1</span> 合并追加变量的代码,并保存到flights</a></li>
-  </ul></li>
+  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe"><span class="header-section-number">3.5</span> The pipe</a></li>
   <li><a href="#groups" id="toc-groups" class="nav-link" data-scroll-target="#groups"><span class="header-section-number">3.6</span> Groups</a>
   <ul class="collapse">
   <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="header-section-number">3.6.1</span> group_by()</a></li>
   <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">3.6.2</span> summarize()</a></li>
   <li><a href="#by" id="toc-by" class="nav-link" data-scroll-target="#by"><span class="header-section-number">3.6.3</span> .by</a></li>
+  <li><a href="#小练习-2" id="toc-小练习-2" class="nav-link" data-scroll-target="#小练习-2"><span class="header-section-number">3.6.4</span> 小练习</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -825,7 +824,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <ol start="4" type="1">
 <li>将到达延误时长(arr_delay)中有缺失值的行剔除</li>
 </ol>
-<p>第2题: 按照到达延误时长(arr_delay)降序排列航班</p>
+<p>第2题: 对数据框christmas_jfk, 按照到达延误时长(arr_delay)降序排列航班</p>
 <p>第3题: 绘制数据框christmas_jfk中出发时间(dep_time)和到达延误时长(arr_delay)的散点图，散点的颜色用航空公司(carrier)来映射, 散点的大小用飞行距离来映射。</p>
 <details>
 <summary>
@@ -838,7 +837,7 @@ code
 <span id="cb47-4"><a href="#cb47-4"></a>  <span class="fu">drop_na</span>(arr_delay) <span class="sc">%&gt;%</span> </span>
 <span id="cb47-5"><a href="#cb47-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(arr_delay))</span>
 <span id="cb47-6"><a href="#cb47-6"></a></span>
-<span id="cb47-7"><a href="#cb47-7"></a>christmas_jfk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-7"><a href="#cb47-7"></a>christmas_jfk <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -853,10 +852,31 @@ code
  8  2013    12    24      804            800         4     1144           1135
  9  2013    12    24     1536           1510        26     1852           1845
 10  2013    12    24     1700           1700         0     2046           2039
-# ℹ 42 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+   arr_delay carrier flight tailnum origin dest  air_time distance  hour minute
+       &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1       251 AA          85 N374AA  JFK    SFO        341     2586    15     30
+ 2        16 AA         936 N5EUAA  JFK    STT        206     1623     7     50
+ 3        12 US         840 N558UW  JFK    CLT        112      541     6     15
+ 4        12 AA           1 N336AA  JFK    LAX        343     2475     9      0
+ 5        11 AA        1345 N319AA  JFK    MIA        168     1089     7     20
+ 6        11 US        1817 N540UW  JFK    CLT         88      541    12      0
+ 7        10 AA          21 N339AA  JFK    LAX        343     2475    19      0
+ 8         9 AA          59 N377AA  JFK    SFO        364     2586     8      0
+ 9         7 AA         145 N5FHAA  JFK    MIA        173     1089    15     10
+10         7 UA         512 N597UA  JFK    SFO        363     2586    17      0
+   time_hour          
+   &lt;dttm&gt;             
+ 1 2013-12-24 15:00:00
+ 2 2013-12-24 07:00:00
+ 3 2013-12-24 06:00:00
+ 4 2013-12-24 09:00:00
+ 5 2013-12-24 07:00:00
+ 6 2013-12-24 12:00:00
+ 7 2013-12-24 19:00:00
+ 8 2013-12-24 08:00:00
+ 9 2013-12-24 15:00:00
+10 2013-12-24 17:00:00
+# ℹ 42 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">nrow</span>(christmas_jfk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1072,10 +1092,12 @@ code
 </div>
 </div>
 <p>There are a number of helper functions you can use within select():</p>
-<p>starts_with(“abc”): matches names that begin with “abc”.</p>
-<p>ends_with(“xyz”): matches names that end with “xyz”.</p>
-<p>contains(“ijk”): matches names that contain “ijk”.</p>
-<p>num_range(“x”, 1:3): matches x1, x2 and x3.</p>
+<ul>
+<li><p>starts_with(“abc”): matches names that begin with “abc”.</p></li>
+<li><p>ends_with(“xyz”): matches names that end with “xyz”.</p></li>
+<li><p>contains(“ijk”): matches names that contain “ijk”.</p></li>
+<li><p>num_range(“x”, 1:3): matches x1, x2 and x3.</p></li>
+</ul>
 </section>
 <section id="重命名变量rename" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="重命名变量rename"><span class="header-section-number">3.4.3</span> 重命名变量rename()</h3>
@@ -1294,58 +1316,170 @@ code
 </div>
 </div>
 </section>
+<section id="小练习-1" class="level3" data-number="3.4.8">
+<h3 data-number="3.4.8" class="anchored" data-anchor-id="小练习-1"><span class="header-section-number">3.4.8</span> 小练习</h3>
+<p>第1题：将出发地(origin)是”JFK”机场的航班筛选出来, 创建数据框jfk_flights, 在该数据框中追加如下变量：</p>
+<ol type="1">
+<li>追加新变量distance_group。根据distance(单位：英里)的数值，将航班分为短途、中途和长途三类。 distance_group值为”short”, “medium”, “long”。distance_group与distance的对应关系如下：</li>
+</ol>
+<ul>
+<li><p>短途飞行（Short-haul flight）：飞行距离少于500英里的航班。</p></li>
+<li><p>中途飞行（Medium-haul flight）：飞行距离在500到1,550英里之间的航班。</p></li>
+<li><p>长途飞行（Long-haul flight）：飞行距离超过1,550英里的航班</p></li>
+</ul>
+<ol start="2" type="1">
+<li><p>追加新变量status。若arr_delay的值为缺失值，则status等于cancelled，若arr_delay的值不是缺失值，则status等于normal。</p></li>
+<li><p>追加新变量month_name，将month的值转换为月份的英文名称，例如1转换为January，2转换为February，以此类推。</p></li>
+</ol>
+<p>第2题：绘制出第1题中得到的数据框jfk_flights中航班数量的条形图，横坐标为月份的英文名称，纵坐标为航班数量。</p>
+<p>第3题：绘制出第1题中得到的数据框jfk_flights中每个月份的取消/正常航班数量的条形图，横坐标为月份的英文名称，纵坐标为航班数量。</p>
+<details>
+<summary>
+code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co"># 筛选出发地为"JFK"的航班</span></span>
+<span id="cb84-2"><a href="#cb84-2"></a>jfk_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb84-3"><a href="#cb84-3"></a>  <span class="fu">filter</span>(origin <span class="sc">==</span> <span class="st">"JFK"</span>)</span>
+<span id="cb84-4"><a href="#cb84-4"></a></span>
+<span id="cb84-5"><a href="#cb84-5"></a><span class="co"># 追加新变量distance_group, status和month_name</span></span>
+<span id="cb84-6"><a href="#cb84-6"></a>jfk_flights <span class="ot">&lt;-</span> jfk_flights <span class="sc">%&gt;%</span></span>
+<span id="cb84-7"><a href="#cb84-7"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb84-8"><a href="#cb84-8"></a>    <span class="at">distance_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb84-9"><a href="#cb84-9"></a>      distance <span class="sc">&lt;</span> <span class="dv">500</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
+<span id="cb84-10"><a href="#cb84-10"></a>      distance <span class="sc">&gt;=</span> <span class="dv">500</span> <span class="sc">&amp;</span> distance <span class="sc">&lt;=</span> <span class="dv">1550</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
+<span id="cb84-11"><a href="#cb84-11"></a>      distance <span class="sc">&gt;</span> <span class="dv">1550</span> <span class="sc">~</span> <span class="st">"long"</span></span>
+<span id="cb84-12"><a href="#cb84-12"></a>    ),</span>
+<span id="cb84-13"><a href="#cb84-13"></a>    <span class="at">status =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(arr_delay), <span class="st">"cancelled"</span>, <span class="st">"normal"</span>),</span>
+<span id="cb84-14"><a href="#cb84-14"></a>    <span class="at">month_name =</span> month.abb[month],  <span class="co"># 使用内置的月份缩写向量month.abb</span></span>
+<span id="cb84-15"><a href="#cb84-15"></a>    <span class="at">.after =</span> day  <span class="co"># 将新变量放在day列后</span></span>
+<span id="cb84-16"><a href="#cb84-16"></a>  )</span>
+<span id="cb84-17"><a href="#cb84-17"></a></span>
+<span id="cb84-18"><a href="#cb84-18"></a>jfk_flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 111,279 × 22
+    year month   day distance_group status month_name dep_time sched_dep_time
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;         &lt;int&gt;          &lt;int&gt;
+ 1  2013     1     1 medium         normal Jan             542            540
+ 2  2013     1     1 long           normal Jan             544            545
+ 3  2013     1     1 medium         normal Jan             557            600
+ 4  2013     1     1 medium         normal Jan             558            600
+ 5  2013     1     1 medium         normal Jan             558            600
+ 6  2013     1     1 long           normal Jan             558            600
+ 7  2013     1     1 short          normal Jan             559            559
+ 8  2013     1     1 medium         normal Jan             606            610
+ 9  2013     1     1 long           normal Jan             611            600
+10  2013     1     1 medium         normal Jan             613            610
+# ℹ 111,269 more rows
+# ℹ 14 more variables: dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;, sched_arr_time &lt;int&gt;,
+#   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;,
+#   dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;,
+#   time_hour &lt;dttm&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="co"># 将month_name转换为有序因子，确保月份按自然顺序排序</span></span>
+<span id="cb86-2"><a href="#cb86-2"></a>jfk_flights<span class="sc">$</span>month_name <span class="ot">&lt;-</span> <span class="fu">factor</span>(jfk_flights<span class="sc">$</span>month_name, </span>
+<span id="cb86-3"><a href="#cb86-3"></a>                                    <span class="at">levels =</span> month.abb, </span>
+<span id="cb86-4"><a href="#cb86-4"></a>                                    <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb86-5"><a href="#cb86-5"></a></span>
+<span id="cb86-6"><a href="#cb86-6"></a><span class="co"># 绘制柱状图</span></span>
+<span id="cb86-7"><a href="#cb86-7"></a><span class="fu">ggplot</span>(jfk_flights, <span class="fu">aes</span>(<span class="at">x =</span> month_name, <span class="at">fill =</span> month_name)) <span class="sc">+</span></span>
+<span id="cb86-8"><a href="#cb86-8"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb86-9"><a href="#cb86-9"></a>  <span class="fu">xlab</span>(<span class="st">"Month"</span>) <span class="sc">+</span></span>
+<span id="cb86-10"><a href="#cb86-10"></a>  <span class="fu">ylab</span>(<span class="st">"Number of Flights"</span>) <span class="sc">+</span></span>
+<span id="cb86-11"><a href="#cb86-11"></a>  <span class="fu">ggtitle</span>(<span class="st">"Number of Flights from JFK by Month"</span>) <span class="sc">+</span></span>
+<span id="cb86-12"><a href="#cb86-12"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb86-13"><a href="#cb86-13"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="co"># 优化x轴标签显示</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="script5_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="co"># 绘制帕累托图</span></span>
+<span id="cb87-2"><a href="#cb87-2"></a><span class="fu">ggplot</span>(jfk_flights, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(month_name), <span class="at">fill =</span> month_name)) <span class="sc">+</span></span>
+<span id="cb87-3"><a href="#cb87-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb87-4"><a href="#cb87-4"></a>  <span class="fu">xlab</span>(<span class="st">"Month"</span>) <span class="sc">+</span></span>
+<span id="cb87-5"><a href="#cb87-5"></a>  <span class="fu">ylab</span>(<span class="st">"Number of Flights"</span>) <span class="sc">+</span></span>
+<span id="cb87-6"><a href="#cb87-6"></a>  <span class="fu">ggtitle</span>(<span class="st">"Number of Flights from JFK by Month"</span>) <span class="sc">+</span></span>
+<span id="cb87-7"><a href="#cb87-7"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb87-8"><a href="#cb87-8"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="co"># 优化x轴标签显示</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="script5_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="co"># 绘制柱状图</span></span>
+<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">ggplot</span>(jfk_flights, <span class="fu">aes</span>(<span class="at">x =</span> month_name, <span class="at">fill =</span> month_name)) <span class="sc">+</span></span>
+<span id="cb88-3"><a href="#cb88-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb88-4"><a href="#cb88-4"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> status, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span>  <span class="co"># 按status分面，y轴自由缩放</span></span>
+<span id="cb88-5"><a href="#cb88-5"></a>  <span class="fu">xlab</span>(<span class="st">"Month"</span>) <span class="sc">+</span></span>
+<span id="cb88-6"><a href="#cb88-6"></a>  <span class="fu">ylab</span>(<span class="st">"Number of Flights"</span>) <span class="sc">+</span></span>
+<span id="cb88-7"><a href="#cb88-7"></a>  <span class="fu">ggtitle</span>(<span class="st">"Number of Flights from JFK by Month"</span>) <span class="sc">+</span></span>
+<span id="cb88-8"><a href="#cb88-8"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb88-9"><a href="#cb88-9"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="co"># 优化x轴标签显示</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="script5_files/figure-html/unnamed-chunk-24-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</details></section>
 </section>
 <section id="the-pipe" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="the-pipe"><span class="header-section-number">3.5</span> The pipe</h2>
-<section id="合并追加变量的代码并保存到flights" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="合并追加变量的代码并保存到flights"><span class="header-section-number">3.5.1</span> 合并追加变量的代码,并保存到flights</h3>
+<p>合并追加变量的代码,并保存到flights_new数据框中</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co">#追加gain, status, quarter和company</span></span>
-<span id="cb84-2"><a href="#cb84-2"></a></span>
-<span id="cb84-3"><a href="#cb84-3"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb84-4"><a href="#cb84-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb84-5"><a href="#cb84-5"></a>    <span class="at">gain =</span> arr_delay <span class="sc">-</span> dep_delay,</span>
-<span id="cb84-6"><a href="#cb84-6"></a>    <span class="at">speed =</span> distance <span class="sc">/</span> air_time <span class="sc">*</span> <span class="dv">60</span>,</span>
-<span id="cb84-7"><a href="#cb84-7"></a>    <span class="at">.after =</span> arr_delay) <span class="sc">%&gt;%</span></span>
-<span id="cb84-8"><a href="#cb84-8"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb84-9"><a href="#cb84-9"></a>    <span class="at">status =</span> <span class="fu">case_when</span>(</span>
-<span id="cb84-10"><a href="#cb84-10"></a>      <span class="fu">is.na</span>(arr_delay)      <span class="sc">~</span> <span class="st">"cancelled"</span>, </span>
-<span id="cb84-11"><a href="#cb84-11"></a>      arr_delay <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">30</span>       <span class="sc">~</span> <span class="st">"very early"</span>, </span>
-<span id="cb84-12"><a href="#cb84-12"></a>      arr_delay <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">15</span>       <span class="sc">~</span> <span class="st">"early"</span>, </span>
-<span id="cb84-13"><a href="#cb84-13"></a>      <span class="fu">abs</span>(arr_delay) <span class="sc">&lt;=</span> <span class="dv">15</span>  <span class="sc">~</span> <span class="st">"on time"</span>, </span>
-<span id="cb84-14"><a href="#cb84-14"></a>      arr_delay <span class="sc">&lt;</span> <span class="dv">60</span>        <span class="sc">~</span> <span class="st">"late"</span>, </span>
-<span id="cb84-15"><a href="#cb84-15"></a>      arr_delay <span class="sc">&lt;</span> <span class="cn">Inf</span>       <span class="sc">~</span> <span class="st">"very late"</span>, </span>
-<span id="cb84-16"><a href="#cb84-16"></a>    ),</span>
-<span id="cb84-17"><a href="#cb84-17"></a>    <span class="at">.after =</span> arr_delay) <span class="sc">%&gt;%</span> </span>
-<span id="cb84-18"><a href="#cb84-18"></a>  <span class="fu">mutate</span>(<span class="at">quarter =</span> <span class="fu">case_when</span>(</span>
-<span id="cb84-19"><a href="#cb84-19"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Winter"</span>,</span>
-<span id="cb84-20"><a href="#cb84-20"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Spring"</span>,</span>
-<span id="cb84-21"><a href="#cb84-21"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">"Summer"</span>,</span>
-<span id="cb84-22"><a href="#cb84-22"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">"Fall"</span></span>
-<span id="cb84-23"><a href="#cb84-23"></a>  ), </span>
-<span id="cb84-24"><a href="#cb84-24"></a>  <span class="at">.before =</span> month) <span class="sc">%&gt;%</span></span>
-<span id="cb84-25"><a href="#cb84-25"></a>  <span class="fu">mutate</span>(<span class="at">company =</span> <span class="fu">recode</span>(carrier,</span>
-<span id="cb84-26"><a href="#cb84-26"></a>                          <span class="st">"9E"</span> <span class="ot">=</span> <span class="st">"Endeavor Air"</span>,</span>
-<span id="cb84-27"><a href="#cb84-27"></a>                          <span class="st">"AA"</span> <span class="ot">=</span> <span class="st">"American Airlines"</span>,</span>
-<span id="cb84-28"><a href="#cb84-28"></a>                          <span class="st">"AS"</span> <span class="ot">=</span> <span class="st">"Alaska Airlines"</span>,</span>
-<span id="cb84-29"><a href="#cb84-29"></a>                          <span class="st">"B6"</span> <span class="ot">=</span> <span class="st">"JetBlue Airways"</span>,</span>
-<span id="cb84-30"><a href="#cb84-30"></a>                          <span class="st">"DL"</span> <span class="ot">=</span> <span class="st">"Delta Air Lines"</span>,</span>
-<span id="cb84-31"><a href="#cb84-31"></a>                          <span class="st">"EV"</span> <span class="ot">=</span> <span class="st">"ExpressJet Airlines"</span>,</span>
-<span id="cb84-32"><a href="#cb84-32"></a>                          <span class="st">"F9"</span> <span class="ot">=</span> <span class="st">"Frontier Airlines"</span>,</span>
-<span id="cb84-33"><a href="#cb84-33"></a>                          <span class="st">"FL"</span> <span class="ot">=</span> <span class="st">"AirTran Airways"</span>,</span>
-<span id="cb84-34"><a href="#cb84-34"></a>                          <span class="st">"HA"</span> <span class="ot">=</span> <span class="st">"Hawaiian Airlines"</span>,</span>
-<span id="cb84-35"><a href="#cb84-35"></a>                          <span class="st">"MQ"</span> <span class="ot">=</span> <span class="st">"Envoy Air"</span>,</span>
-<span id="cb84-36"><a href="#cb84-36"></a>                          <span class="st">"OO"</span> <span class="ot">=</span> <span class="st">"SkyWest Airlines"</span>,</span>
-<span id="cb84-37"><a href="#cb84-37"></a>                          <span class="st">"UA"</span> <span class="ot">=</span> <span class="st">"United Airlines"</span>,</span>
-<span id="cb84-38"><a href="#cb84-38"></a>                          <span class="st">"US"</span> <span class="ot">=</span> <span class="st">"US Airways"</span>,</span>
-<span id="cb84-39"><a href="#cb84-39"></a>                          <span class="st">"VX"</span> <span class="ot">=</span> <span class="st">"Virgin America"</span>,</span>
-<span id="cb84-40"><a href="#cb84-40"></a>                          <span class="st">"WN"</span> <span class="ot">=</span> <span class="st">"Southwest Airlines"</span>,</span>
-<span id="cb84-41"><a href="#cb84-41"></a>                          <span class="st">"YV"</span> <span class="ot">=</span> <span class="st">"Mesa Airlines"</span>),</span>
-<span id="cb84-42"><a href="#cb84-42"></a>         <span class="at">.after =</span> carrier) </span>
-<span id="cb84-43"><a href="#cb84-43"></a></span>
-<span id="cb84-44"><a href="#cb84-44"></a>flights </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="co">#追加gain, status, quarter和company</span></span>
+<span id="cb89-2"><a href="#cb89-2"></a></span>
+<span id="cb89-3"><a href="#cb89-3"></a>flights_new <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb89-4"><a href="#cb89-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb89-5"><a href="#cb89-5"></a>    <span class="at">gain =</span> arr_delay <span class="sc">-</span> dep_delay,</span>
+<span id="cb89-6"><a href="#cb89-6"></a>    <span class="at">speed =</span> distance <span class="sc">/</span> air_time <span class="sc">*</span> <span class="dv">60</span>,</span>
+<span id="cb89-7"><a href="#cb89-7"></a>    <span class="at">.after =</span> arr_delay) <span class="sc">%&gt;%</span></span>
+<span id="cb89-8"><a href="#cb89-8"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb89-9"><a href="#cb89-9"></a>    <span class="at">status =</span> <span class="fu">case_when</span>(</span>
+<span id="cb89-10"><a href="#cb89-10"></a>      <span class="fu">is.na</span>(arr_delay)      <span class="sc">~</span> <span class="st">"cancelled"</span>, </span>
+<span id="cb89-11"><a href="#cb89-11"></a>      arr_delay <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">30</span>       <span class="sc">~</span> <span class="st">"very early"</span>, </span>
+<span id="cb89-12"><a href="#cb89-12"></a>      arr_delay <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">15</span>       <span class="sc">~</span> <span class="st">"early"</span>, </span>
+<span id="cb89-13"><a href="#cb89-13"></a>      <span class="fu">abs</span>(arr_delay) <span class="sc">&lt;=</span> <span class="dv">15</span>  <span class="sc">~</span> <span class="st">"on time"</span>, </span>
+<span id="cb89-14"><a href="#cb89-14"></a>      arr_delay <span class="sc">&lt;</span> <span class="dv">60</span>        <span class="sc">~</span> <span class="st">"late"</span>, </span>
+<span id="cb89-15"><a href="#cb89-15"></a>      arr_delay <span class="sc">&lt;</span> <span class="cn">Inf</span>       <span class="sc">~</span> <span class="st">"very late"</span>, </span>
+<span id="cb89-16"><a href="#cb89-16"></a>    ),</span>
+<span id="cb89-17"><a href="#cb89-17"></a>    <span class="at">.after =</span> arr_delay) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-18"><a href="#cb89-18"></a>  <span class="fu">mutate</span>(<span class="at">quarter =</span> <span class="fu">case_when</span>(</span>
+<span id="cb89-19"><a href="#cb89-19"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Winter"</span>,</span>
+<span id="cb89-20"><a href="#cb89-20"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Spring"</span>,</span>
+<span id="cb89-21"><a href="#cb89-21"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">"Summer"</span>,</span>
+<span id="cb89-22"><a href="#cb89-22"></a>    month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">"Fall"</span></span>
+<span id="cb89-23"><a href="#cb89-23"></a>  ), </span>
+<span id="cb89-24"><a href="#cb89-24"></a>  <span class="at">.before =</span> month) <span class="sc">%&gt;%</span></span>
+<span id="cb89-25"><a href="#cb89-25"></a>  <span class="fu">mutate</span>(<span class="at">company =</span> <span class="fu">recode</span>(carrier,</span>
+<span id="cb89-26"><a href="#cb89-26"></a>                          <span class="st">"9E"</span> <span class="ot">=</span> <span class="st">"Endeavor Air"</span>,</span>
+<span id="cb89-27"><a href="#cb89-27"></a>                          <span class="st">"AA"</span> <span class="ot">=</span> <span class="st">"American Airlines"</span>,</span>
+<span id="cb89-28"><a href="#cb89-28"></a>                          <span class="st">"AS"</span> <span class="ot">=</span> <span class="st">"Alaska Airlines"</span>,</span>
+<span id="cb89-29"><a href="#cb89-29"></a>                          <span class="st">"B6"</span> <span class="ot">=</span> <span class="st">"JetBlue Airways"</span>,</span>
+<span id="cb89-30"><a href="#cb89-30"></a>                          <span class="st">"DL"</span> <span class="ot">=</span> <span class="st">"Delta Air Lines"</span>,</span>
+<span id="cb89-31"><a href="#cb89-31"></a>                          <span class="st">"EV"</span> <span class="ot">=</span> <span class="st">"ExpressJet Airlines"</span>,</span>
+<span id="cb89-32"><a href="#cb89-32"></a>                          <span class="st">"F9"</span> <span class="ot">=</span> <span class="st">"Frontier Airlines"</span>,</span>
+<span id="cb89-33"><a href="#cb89-33"></a>                          <span class="st">"FL"</span> <span class="ot">=</span> <span class="st">"AirTran Airways"</span>,</span>
+<span id="cb89-34"><a href="#cb89-34"></a>                          <span class="st">"HA"</span> <span class="ot">=</span> <span class="st">"Hawaiian Airlines"</span>,</span>
+<span id="cb89-35"><a href="#cb89-35"></a>                          <span class="st">"MQ"</span> <span class="ot">=</span> <span class="st">"Envoy Air"</span>,</span>
+<span id="cb89-36"><a href="#cb89-36"></a>                          <span class="st">"OO"</span> <span class="ot">=</span> <span class="st">"SkyWest Airlines"</span>,</span>
+<span id="cb89-37"><a href="#cb89-37"></a>                          <span class="st">"UA"</span> <span class="ot">=</span> <span class="st">"United Airlines"</span>,</span>
+<span id="cb89-38"><a href="#cb89-38"></a>                          <span class="st">"US"</span> <span class="ot">=</span> <span class="st">"US Airways"</span>,</span>
+<span id="cb89-39"><a href="#cb89-39"></a>                          <span class="st">"VX"</span> <span class="ot">=</span> <span class="st">"Virgin America"</span>,</span>
+<span id="cb89-40"><a href="#cb89-40"></a>                          <span class="st">"WN"</span> <span class="ot">=</span> <span class="st">"Southwest Airlines"</span>,</span>
+<span id="cb89-41"><a href="#cb89-41"></a>                          <span class="st">"YV"</span> <span class="ot">=</span> <span class="st">"Mesa Airlines"</span>),</span>
+<span id="cb89-42"><a href="#cb89-42"></a>         <span class="at">.after =</span> carrier) </span>
+<span id="cb89-43"><a href="#cb89-43"></a></span>
+<span id="cb89-44"><a href="#cb89-44"></a>flights_new </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 24
@@ -1369,32 +1503,30 @@ code
 </div>
 </div>
 </section>
-</section>
 <section id="groups" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="groups"><span class="header-section-number">3.6</span> Groups</h2>
 <section id="group_by" class="level3" data-number="3.6.1">
 <h3 data-number="3.6.1" class="anchored" data-anchor-id="group_by"><span class="header-section-number">3.6.1</span> group_by()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb86-2"><a href="#cb86-2"></a>  <span class="fu">group_by</span>(month) <span class="co">#按照month分组</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb91-2"><a href="#cb91-2"></a>  <span class="fu">group_by</span>(month) <span class="co">#按照month分组</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 24
+<pre><code># A tibble: 336,776 × 19
 # Groups:   month [12]
-    year quarter month   day dep_time sched_dep_time dep_delay arr_time
-   &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
- 1  2013 Winter      1     1      517            515         2      830
- 2  2013 Winter      1     1      533            529         4      850
- 3  2013 Winter      1     1      542            540         2      923
- 4  2013 Winter      1     1      544            545        -1     1004
- 5  2013 Winter      1     1      554            600        -6      812
- 6  2013 Winter      1     1      554            558        -4      740
- 7  2013 Winter      1     1      555            600        -5      913
- 8  2013 Winter      1     1      557            600        -3      709
- 9  2013 Winter      1     1      557            600        -3      838
-10  2013 Winter      1     1      558            600        -2      753
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+ 1  2013     1     1      517            515         2      830            819
+ 2  2013     1     1      533            529         4      850            830
+ 3  2013     1     1      542            540         2      923            850
+ 4  2013     1     1      544            545        -1     1004           1022
+ 5  2013     1     1      554            600        -6      812            837
+ 6  2013     1     1      554            558        -4      740            728
+ 7  2013     1     1      555            600        -5      913            854
+ 8  2013     1     1      557            600        -3      709            723
+ 9  2013     1     1      557            600        -3      838            846
+10  2013     1     1      558            600        -2      753            745
 # ℹ 336,766 more rows
-# ℹ 16 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, status &lt;chr&gt;,
-#   gain &lt;dbl&gt;, speed &lt;dbl&gt;, carrier &lt;chr&gt;, company &lt;chr&gt;, flight &lt;int&gt;,
+# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
 #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
@@ -1404,9 +1536,9 @@ code
 <section id="summarize" class="level3" data-number="3.6.2">
 <h3 data-number="3.6.2" class="anchored" data-anchor-id="summarize"><span class="header-section-number">3.6.2</span> summarize()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb88-2"><a href="#cb88-2"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
-<span id="cb88-3"><a href="#cb88-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay)) <span class="co">#按照month分组，计算dep_delay的均值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb93-2"><a href="#cb93-2"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-3"><a href="#cb93-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay)) <span class="co">#按照month分组，计算dep_delay的均值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
    month mean_delay
@@ -1428,11 +1560,11 @@ code
 <p>NA: missing value</p>
 <p>当向量中有NA，mean()函数默认返回NA，如果想忽略NA值，可以使用na.rm = TRUE</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb90-2"><a href="#cb90-2"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-3"><a href="#cb90-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co">#na.rm = TRUE表示忽略NA值</span></span>
-<span id="cb90-4"><a href="#cb90-4"></a>            <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb90-5"><a href="#cb90-5"></a>  ) <span class="co">#按照month分组，计算dep_delay的均值和n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb95-2"><a href="#cb95-2"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-3"><a href="#cb95-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co">#na.rm = TRUE表示忽略NA值</span></span>
+<span id="cb95-4"><a href="#cb95-4"></a>            <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb95-5"><a href="#cb95-5"></a>  ) <span class="co">#按照month分组，计算dep_delay的均值和n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
    month mean_delay     n
@@ -1452,11 +1584,10 @@ code
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># 统计每天的航班数量</span></span>
-<span id="cb92-2"><a href="#cb92-2"></a></span>
-<span id="cb92-3"><a href="#cb92-3"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb92-4"><a href="#cb92-4"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">%&gt;%</span> </span>
-<span id="cb92-5"><a href="#cb92-5"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="co">#生成的数据框是一个有分组结构的数据框</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="co"># 统计每天的航班数量</span></span>
+<span id="cb97-2"><a href="#cb97-2"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb97-3"><a href="#cb97-3"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-4"><a href="#cb97-4"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="co">#生成的数据框是一个有分组结构的数据框</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'year', 'month'. You can override using the
 `.groups` argument.</code></pre>
@@ -1478,11 +1609,11 @@ code
 10  2013     1    10   932
 # ℹ 355 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb95-2"><a href="#cb95-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">%&gt;%</span> </span>
-<span id="cb95-3"><a href="#cb95-3"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),           <span class="co">#按照year, month, day分组，计算n</span></span>
-<span id="cb95-4"><a href="#cb95-4"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>   <span class="co">#生成的数据框是没有分组结构</span></span>
-<span id="cb95-5"><a href="#cb95-5"></a>            ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb100-2"><a href="#cb100-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">%&gt;%</span> </span>
+<span id="cb100-3"><a href="#cb100-3"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),           <span class="co">#按照year, month, day分组，计算n</span></span>
+<span id="cb100-4"><a href="#cb100-4"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>   <span class="co">#生成的数据框是没有分组结构</span></span>
+<span id="cb100-5"><a href="#cb100-5"></a>            ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 365 × 4
     year month   day     n
@@ -1504,12 +1635,12 @@ code
 <section id="by" class="level3" data-number="3.6.3">
 <h3 data-number="3.6.3" class="anchored" data-anchor-id="by"><span class="header-section-number">3.6.3</span> .by</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb97-2"><a href="#cb97-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
-<span id="cb97-3"><a href="#cb97-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb97-4"><a href="#cb97-4"></a>            <span class="at">.by =</span> month </span>
-<span id="cb97-5"><a href="#cb97-5"></a>  ) <span class="sc">%&gt;%</span> <span class="co">#按月份分组，计算dep_delay的均值和n</span></span>
-<span id="cb97-6"><a href="#cb97-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb102-2"><a href="#cb102-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
+<span id="cb102-3"><a href="#cb102-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb102-4"><a href="#cb102-4"></a>            <span class="at">.by =</span> month </span>
+<span id="cb102-5"><a href="#cb102-5"></a>  ) <span class="sc">%&gt;%</span> <span class="co">#按月份分组，计算dep_delay的均值和n</span></span>
+<span id="cb102-6"><a href="#cb102-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
    month mean_delay     n
@@ -1527,12 +1658,12 @@ code
 11    10       6.24 28889
 12    11       5.44 27268</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb99-2"><a href="#cb99-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
-<span id="cb99-3"><a href="#cb99-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb99-4"><a href="#cb99-4"></a>            <span class="at">.by =</span> <span class="fu">c</span>(origin)  <span class="co">#按origin分组，计算dep_delay的均值和n</span></span>
-<span id="cb99-5"><a href="#cb99-5"></a>            ) <span class="sc">%&gt;%</span> </span>
-<span id="cb99-6"><a href="#cb99-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb104-2"><a href="#cb104-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
+<span id="cb104-3"><a href="#cb104-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb104-4"><a href="#cb104-4"></a>            <span class="at">.by =</span> <span class="fu">c</span>(origin)  <span class="co">#按origin分组，计算dep_delay的均值和n</span></span>
+<span id="cb104-5"><a href="#cb104-5"></a>            ) <span class="sc">%&gt;%</span> </span>
+<span id="cb104-6"><a href="#cb104-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   origin mean_delay      n
@@ -1541,12 +1672,12 @@ code
 2 JFK          12.1 111279
 3 LGA          10.3 104662</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb101-2"><a href="#cb101-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
-<span id="cb101-3"><a href="#cb101-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb101-4"><a href="#cb101-4"></a>            <span class="at">.by =</span> <span class="fu">c</span>(dest) <span class="co">#按dest分组，计算dep_delay的均值和n</span></span>
-<span id="cb101-5"><a href="#cb101-5"></a>            ) <span class="sc">%&gt;%</span></span>
-<span id="cb101-6"><a href="#cb101-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb106-2"><a href="#cb106-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
+<span id="cb106-3"><a href="#cb106-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb106-4"><a href="#cb106-4"></a>            <span class="at">.by =</span> <span class="fu">c</span>(dest) <span class="co">#按dest分组，计算dep_delay的均值和n</span></span>
+<span id="cb106-5"><a href="#cb106-5"></a>            ) <span class="sc">%&gt;%</span></span>
+<span id="cb106-6"><a href="#cb106-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 105 × 3
    dest  mean_delay     n
@@ -1563,12 +1694,12 @@ code
 10 MSN         23.6   572
 # ℹ 95 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb103-2"><a href="#cb103-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
-<span id="cb103-3"><a href="#cb103-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb103-4"><a href="#cb103-4"></a>            <span class="at">.by =</span> <span class="fu">c</span>(origin, dest) <span class="co">#按origin, dest分组，计算dep_delay的均值和n</span></span>
-<span id="cb103-5"><a href="#cb103-5"></a>            ) <span class="sc">%&gt;%</span></span>
-<span id="cb103-6"><a href="#cb103-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb108-2"><a href="#cb108-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>),</span>
+<span id="cb108-3"><a href="#cb108-3"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb108-4"><a href="#cb108-4"></a>            <span class="at">.by =</span> <span class="fu">c</span>(origin, dest) <span class="co">#按origin, dest分组，计算dep_delay的均值和n</span></span>
+<span id="cb108-5"><a href="#cb108-5"></a>            ) <span class="sc">%&gt;%</span></span>
+<span id="cb108-6"><a href="#cb108-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_delay)) <span class="co">#按mean_delay降序</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 224 × 4
    origin dest  mean_delay     n
@@ -1586,9 +1717,166 @@ code
 # ℹ 214 more rows</code></pre>
 </div>
 </div>
-
-
 </section>
+<section id="小练习-2" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="小练习-2"><span class="header-section-number">3.6.4</span> 小练习</h3>
+<p>第1题：如果你想尽可能避免延误，你应该选择哪个时间段起飞的航班？</p>
+<p>第2题：哪三家航空公司(carrier)的平均延误时间(arr_delay)最长？</p>
+<p>第3题：哪个月份的平均延误时间(arr_delay)最长？</p>
+<p>第4题：讲延误时间(arr_delay)超过15分钟的定义为延误航班。 计算各个月份的延误航班的比例，并按比例降序排列。</p>
+<p>第5题：讲延误时间(arr_delay)超过15分钟的定义为延误航班。 计算各个航空公司(carrier)的延误航班的比例，并按各航空公司航班数量降序排列。</p>
+<p>第6题：从JFK机场出发(origin)的航班中，航班数量最多的5家航空公司是哪些？并统计出其航班数量？</p>
+<details>
+<summary>
+code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="co"># 第1题</span></span>
+<span id="cb110-2"><a href="#cb110-2"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb110-3"><a href="#cb110-3"></a>  <span class="fu">group_by</span>(hour) <span class="sc">%&gt;%</span></span>
+<span id="cb110-4"><a href="#cb110-4"></a>  <span class="fu">summarise</span>(<span class="at">avg_arr_delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb110-5"><a href="#cb110-5"></a>  <span class="fu">arrange</span>(avg_arr_delay) <span class="sc">%&gt;%</span> </span>
+<span id="cb110-6"><a href="#cb110-6"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 2
+    hour avg_arr_delay
+   &lt;dbl&gt;         &lt;dbl&gt;
+ 1     7        -5.30 
+ 2     5        -4.80 
+ 3     6        -3.38 
+ 4     9        -1.45 
+ 5     8        -1.11 
+ 6    10         0.954
+ 7    11         1.48 
+ 8    12         3.49 
+ 9    13         6.54 
+10    14         9.20 
+11    23        11.8  
+12    15        12.3  
+13    16        12.6  
+14    18        14.8  
+15    22        16.0  
+16    17        16.0  
+17    19        16.7  
+18    20        16.7  
+19    21        18.4  
+20     1       NaN    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="co"># 第2题</span></span>
+<span id="cb112-2"><a href="#cb112-2"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb112-3"><a href="#cb112-3"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span></span>
+<span id="cb112-4"><a href="#cb112-4"></a>  <span class="fu">summarise</span>(<span class="at">avg_arr_delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb112-5"><a href="#cb112-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_arr_delay)) <span class="sc">%&gt;%</span></span>
+<span id="cb112-6"><a href="#cb112-6"></a>  <span class="fu">top_n</span>(<span class="dv">3</span>, avg_arr_delay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  carrier avg_arr_delay
+  &lt;chr&gt;           &lt;dbl&gt;
+1 F9               21.9
+2 FL               20.1
+3 EV               15.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="co"># 第3题</span></span>
+<span id="cb114-2"><a href="#cb114-2"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb114-3"><a href="#cb114-3"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb114-4"><a href="#cb114-4"></a>  <span class="fu">summarise</span>(<span class="at">avg_arr_delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb114-5"><a href="#cb114-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_arr_delay)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 2
+   month avg_arr_delay
+   &lt;int&gt;         &lt;dbl&gt;
+ 1     7        16.7  
+ 2     6        16.5  
+ 3    12        14.9  
+ 4     4        11.2  
+ 5     1         6.13 
+ 6     8         6.04 
+ 7     3         5.81 
+ 8     2         5.61 
+ 9     5         3.52 
+10    11         0.461
+11    10        -0.167
+12     9        -4.02 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="co"># 第4题</span></span>
+<span id="cb116-2"><a href="#cb116-2"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb116-3"><a href="#cb116-3"></a>  <span class="fu">mutate</span>(<span class="at">is_delayed =</span> arr_delay <span class="sc">&gt;</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb116-4"><a href="#cb116-4"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb116-5"><a href="#cb116-5"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb116-6"><a href="#cb116-6"></a>    <span class="at">total_flights =</span> <span class="fu">n</span>(),</span>
+<span id="cb116-7"><a href="#cb116-7"></a>    <span class="at">delayed_flights =</span> <span class="fu">sum</span>(is_delayed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb116-8"><a href="#cb116-8"></a>    <span class="at">delay_proportion =</span> delayed_flights <span class="sc">/</span> total_flights</span>
+<span id="cb116-9"><a href="#cb116-9"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb116-10"><a href="#cb116-10"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(delay_proportion)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 4
+   month total_flights delayed_flights delay_proportion
+   &lt;int&gt;         &lt;int&gt;           &lt;int&gt;            &lt;dbl&gt;
+ 1    12         28135            8812            0.313
+ 2     7         29425            8902            0.303
+ 3     6         28243            8340            0.295
+ 4     4         28330            7700            0.272
+ 5     8         29327            6852            0.234
+ 6     1         27004            6001            0.222
+ 7     3         28834            6374            0.221
+ 8     2         24951            5418            0.217
+ 9     5         28796            6178            0.215
+10    11         27268            4680            0.172
+11    10         28889            4798            0.166
+12     9         27574            3575            0.130</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a><span class="co"># 第5题</span></span>
+<span id="cb118-2"><a href="#cb118-2"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb118-3"><a href="#cb118-3"></a>  <span class="fu">mutate</span>(<span class="at">is_delayed =</span> arr_delay <span class="sc">&gt;</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb118-4"><a href="#cb118-4"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span></span>
+<span id="cb118-5"><a href="#cb118-5"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb118-6"><a href="#cb118-6"></a>    <span class="at">total_flights =</span> <span class="fu">n</span>(),</span>
+<span id="cb118-7"><a href="#cb118-7"></a>    <span class="at">delayed_flights =</span> <span class="fu">sum</span>(is_delayed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb118-8"><a href="#cb118-8"></a>    <span class="at">delay_proportion =</span> delayed_flights <span class="sc">/</span> total_flights</span>
+<span id="cb118-9"><a href="#cb118-9"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb118-10"><a href="#cb118-10"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_flights)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 4
+   carrier total_flights delayed_flights delay_proportion
+   &lt;chr&gt;           &lt;int&gt;           &lt;int&gt;            &lt;dbl&gt;
+ 1 UA              58665           12592            0.215
+ 2 B6              54635           14111            0.258
+ 3 EV              54173           16028            0.296
+ 4 DL              48110            8690            0.181
+ 5 AA              32729            6004            0.183
+ 6 MQ              26397            6777            0.257
+ 7 US              20536            3559            0.173
+ 8 9E              18460            4309            0.233
+ 9 WN              12275            2994            0.244
+10 VX               5162             924            0.179
+11 FL               3260            1065            0.327
+12 AS                714             102            0.143
+13 F9                685             254            0.371
+14 YV                601             171            0.285
+15 HA                342              43            0.126
+16 OO                 32               7            0.219</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="co"># 第6题</span></span>
+<span id="cb120-2"><a href="#cb120-2"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb120-3"><a href="#cb120-3"></a>  <span class="fu">filter</span>(origin <span class="sc">==</span> <span class="st">"JFK"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb120-4"><a href="#cb120-4"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span></span>
+<span id="cb120-5"><a href="#cb120-5"></a>  <span class="fu">summarise</span>(<span class="at">number_of_flights =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb120-6"><a href="#cb120-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number_of_flights)) <span class="sc">%&gt;%</span></span>
+<span id="cb120-7"><a href="#cb120-7"></a>  <span class="fu">top_n</span>(<span class="dv">5</span>, number_of_flights) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  carrier number_of_flights
+  &lt;chr&gt;               &lt;int&gt;
+1 B6                  42076
+2 DL                  20701
+3 9E                  14651
+4 AA                  13783
+5 MQ                   7193</code></pre>
+</div>
+</div>
+
+
+</details></section>
 </section>
 </section>
 

@@ -181,10 +181,15 @@ mpg %>%
 ## 拓展资源 
 
 
-R for Data Science 2nd edition <https://r4ds.hadley.nz/data-tidy>
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">R for Data Science 2nd edition <https://r4ds.hadley.nz/data-tidy>
 
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">[R代码风格](https://lizongzhang.github.io/r24/style.html){target="_blank"}
 
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R如何快速预览变量分布？summarytools::dfSummary()](https://www.bilibili.com/video/BV1yj411t71t/){target="_blank"}
+
+
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R代码风格：如何写出美观易读的代码?](https://www.bilibili.com/video/BV1KM4m197E5/){target="_blank"}
+
 
 
 
