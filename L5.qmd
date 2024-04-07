@@ -3,18 +3,18 @@ title: "第5讲"
 ---
 # 第5讲 数据管理
 
-<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[代码](https://lizongzhang.github.io/r24/script5.html){target="_blank"}
+<img src="img/teacher.png"  style="width: 24px; height: 24px;margin-right: 10px">[代码](https://lizongzhang.github.io/r24/script5.html){target="_blank"}
 
 ## 教学视频
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[函数select()和mutate()](https://www.bilibili.com/video/BV1XZ4y127rc/){target="_blank"}
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[函数select()和mutate()](https://www.bilibili.com/video/BV1XZ4y127rc/){target="_blank"}
 
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[函数if_else()对变量值进行条件转换](https://www.bilibili.com/video/BV1D94y1d7wT/){target="_blank"}
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[函数if_else()对变量值进行条件转换](https://www.bilibili.com/video/BV1D94y1d7wT/){target="_blank"}
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[函数filter()筛选个案](https://www.bilibili.com/video/BV1rY4y1e7oY/){target="_blank"}
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[函数filter()筛选个案](https://www.bilibili.com/video/BV1rY4y1e7oY/){target="_blank"}
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[如何删除含有缺失值的个案？](https://www.bilibili.com/video/BV1pG41177Bi/){target="_blank"}
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[如何删除含有缺失值的个案？](https://www.bilibili.com/video/BV1pG41177Bi/){target="_blank"}
 
 ## 本章习题
 
@@ -185,10 +185,10 @@ mpg %>%
 
 <img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">[R代码风格](https://lizongzhang.github.io/r24/style.html){target="_blank"}
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R如何快速预览变量分布？summarytools::dfSummary()](https://www.bilibili.com/video/BV1yj411t71t/){target="_blank"}
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[R如何快速预览变量分布？summarytools::dfSummary()](https://www.bilibili.com/video/BV1yj411t71t/){target="_blank"}
 
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R代码风格：如何写出美观易读的代码?](https://www.bilibili.com/video/BV1KM4m197E5/){target="_blank"}
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[R代码风格：如何写出美观易读的代码?](https://www.bilibili.com/video/BV1KM4m197E5/){target="_blank"}
 
 
 

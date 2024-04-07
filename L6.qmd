@@ -71,7 +71,7 @@ title: "第6讲"
 
 ## 习题答案 
 
-<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[第6讲习题答案代码](https://lizongzhang.github.io/stat/6solution.html)
+<img src="img/link.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[第6讲习题答案代码](https://lizongzhang.github.io/stat/6solution.html)
 
 ## 拓展资源 
 
