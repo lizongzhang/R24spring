@@ -2,21 +2,25 @@
 title: "第7讲"
 ---
 
-<h1 style="color: #044875;"> 第3章 图表工具 </h1>
+<h1 style="color: #044875;"> 第7章 中心极限定理与区间估计 </h1>
 
-<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义](https://lizongzhang.github.io/stat/chap3.html)
+<img src="img/teacher.png" style="width: 24px; height: 24px;margin-right: 10px">[7.1 中心极限定理模拟
+        Script](https://lizongzhang.github.io/stat/R7.1.html)
+
+<img src="img/teacher.png"  style="width: 24px; height: 24px;margin-right: 10px">[7.1 中心极限定理模拟
+        Script](https://lizongzhang.github.io/stat/R7.1.html)
 
 <h3 style="color: #044875;"> 教学视频 </h3>
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具合集](https://www.bilibili.com/video/BV1uK4y1X752/)
+<img src="img/video.png" style="width: 24px; height: 24px;margin-right: 10px">[中心极限定理在R中的模拟](https://www.bilibili.com/video/BV1C44y1P7Pe/)
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[EXCEL数据清洗合集](https://www.bilibili.com/video/BV1uc41177Mn/)
+<img src="img/video.png" style="width: 24px; height: 24px;margin-right: 10px">[置信水平的理解------基于R的模拟](https://www.bilibili.com/video/BV1ea411i76G/)
+
+<img src="img/video.png" style="width: 24px; height: 24px;margin-right: 10px">[总体均值的区间估计------R中的t.test函数](https://www.bilibili.com/video/BV1x3411J7xd/)
 
 <h3 style="color: #044875;"> 习题讲评 </h3>
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具综合运用——基金经理](https://www.bilibili.com/video/BV1UJ4m1b7Lb/)
-
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[教材第3章习题讲评](https://www.bilibili.com/video/BV1t3411W7V9/)
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">[第7讲习题答案代码](https://lizongzhang.github.io/stat/solution7.html)
 
 <h3 style="color: #044875;"> 拓展资源 </h3>
 

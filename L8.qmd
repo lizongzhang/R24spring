@@ -2,22 +2,25 @@
 title: "第8讲"
 ---
 
-<h1 style="color: #044875;"> 第3章 图表工具 </h1>
+<h1 style="color: #044875;"> 第8讲 假设检验 </h1>
 
-<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义](https://lizongzhang.github.io/stat/chap3.html)
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">[第8讲作业](https://lizongzhang.github.io/stat/R8ex.html)
+
 
 <h3 style="color: #044875;"> 教学视频 </h3>
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具合集](https://www.bilibili.com/video/BV1uK4y1X752/)
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[R单个总体均值的T检验](https://www.bilibili.com/video/BV1MB4y1m721/)
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[EXCEL数据清洗合集](https://www.bilibili.com/video/BV1uc41177Mn/)
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[R单个总体方差的检验](https://www.bilibili.com/video/BV1MB4y1m7xw)
+
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[两个总体均值的t检验------R中t.test()函数的运用](https://www.bilibili.com/video/BV1zu411k7dM/)
+
+<img src="img/video.png"  style="width: 24px; height: 24px;margin-right: 10px">[两个总体方差的F检验------R中var.test()函数的运用](https://www.bilibili.com/video/BV1zL4y1F78F/)
+
 
 <h3 style="color: #044875;"> 习题讲评 </h3>
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[Excel图表工具综合运用——基金经理](https://www.bilibili.com/video/BV1UJ4m1b7Lb/)
-
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[教材第3章习题讲评](https://www.bilibili.com/video/BV1t3411W7V9/)
-
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">[第8讲习题答案代码](https://lizongzhang.github.io/stat/solution8.html)
 <h3 style="color: #044875;"> 拓展资源 </h3>
 
 在线词云图工具 <https://www.wordclouds.com/>
