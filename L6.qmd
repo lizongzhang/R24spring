@@ -6,7 +6,7 @@ title: "第6讲"
 
 <img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义6.1 描述统计量的计算](https://lizongzhang.github.io/stat/R6.1.html)
 
-<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义6.1 绘制概率密度曲线](https://lizongzhang.github.io/stat/R6.2.html)
+<img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[讲义6.2 绘制概率密度曲线](https://lizongzhang.github.io/stat/R6.2.html)
 
 ## 教学视频 
 
@@ -16,7 +16,7 @@ title: "第6讲"
 
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[利用R绘制正态分布概率密度曲线](https://www.bilibili.com/video/BV1vr4y1L75F/)
 
-<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R中rchisq函数和for循环的应用------不同自由度下的卡方分布比较](https://www.bilibili.com/video/BV1ga411T7vS/)
+<img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R不同自由度下的卡方分布比较——rchisq函数和for循环的应用](https://www.bilibili.com/video/BV1ga411T7vS/)
 
 ## 本章习题
 

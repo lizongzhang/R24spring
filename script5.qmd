@@ -729,3 +729,171 @@ flights %>%
 
 ```
 
+
+# forcats函数
+
+```{r}
+library(tidyverse)
+data(mpg)
+
+count(mpg, drv)
+
+mpg %>% 
+  ggplot(aes(drv, fill = drv)) +
+  geom_bar()
+```
+
+## fct_recode()
+
+```{r}
+mpg <- mpg %>%
+  mutate(drv = fct_recode(drv,
+                          "front wheels" = "f",
+                          "rear wheels" = "r",
+                          "four wheels" = "4"))
+
+mpg %>% 
+  ggplot(aes(drv, fill = drv)) +
+  geom_bar()
+
+```
+
+## fct_infreq() 按频数降序
+
+
+```{r}
+mpg %>% 
+  ggplot(aes(fct_infreq(drv), fill = drv)) +
+  geom_bar()
+```
+
+
+## fct_rev() 
+
+
+```{r}
+mpg %>% 
+  ggplot(aes(fct_rev(fct_infreq(drv)), fill = drv)) +
+  geom_bar()
+```
+
+## fct_reorder()
+
+
+### 按中位数升序排列箱线图
+
+```{r}
+mpg %>%
+  ggplot(aes(cty, fct_reorder(class, cty),
+             fill = class)) +
+  geom_boxplot()
+```
+
+### 按中位数降序排列箱线图
+
+```{r}
+mpg %>%
+  ggplot(aes(cty, fct_reorder(class, -cty),
+             fill = class)) +
+  geom_boxplot()
+```
+
+
+### 按平均数排列箱线图
+
+
+```{r}
+mpg %>% 
+  ggplot(aes(fct_reorder(class, cty, .fun = mean), 
+             cty, fill = class)) +
+  geom_boxplot() +
+  labs(fill = "Class", x = "Class")
+```
+### 柱形的排列
+
+
+```{r}
+mpg %>% 
+  group_by(drv) %>%
+  summarise(mean_cty = mean(cty)) %>% 
+  mutate(drv = fct_reorder(drv, mean_cty)) %>%
+  ggplot(aes(drv, mean_cty, fill = drv)) +
+  geom_col()
+
+mpg %>% 
+  group_by(drv) %>%
+  summarise(mean_cty = mean(cty)) %>% 
+  mutate(drv = fct_reorder(drv, -mean_cty)) %>%
+  ggplot(aes(drv, mean_cty, fill = drv)) +
+  geom_col()
+```
+## fct_lump_()合并小类
+
+
+```{r}
+library(tidyverse)
+data(mpg)
+
+count(mpg, class) %>% arrange(desc(n))
+
+fct_lump_n(mpg$class, 4) %>% fct_count()
+
+fct_lump_min(mpg$class, 30) %>% fct_count()
+
+fct_lump_lowfreq(mpg$class) %>% fct_count()
+
+fct_lump_prop(mpg$class, 0.14) %>% fct_count()
+
+```
+
+
+## fct_collaps()保留指定类别
+
+```{r}
+mpg %>%
+  group_by(class) %>%
+  summarise(proportion = n() / nrow(mpg)) %>%
+  arrange(desc(proportion))
+
+
+fct_collapse(mpg$class,
+             "compact" = c("compact", "subcompact"),
+             "midsize" = c("midsize", "minivan", "pickup")) %>% 
+  fct_count()
+```
+
+## fct_other() 
+
+```{r}
+# c: CNG (Compressed Natural Gas)
+# d: Diesel
+# e: Ethanol blend, typically referring to gasoline blended with a certain proportion of ethanol
+# p: Premium unleaded gasoline 辛烷值较高，通常在91到93之间（在美国），有的甚至更高
+# r: Regular unleaded gasoline 辛烷值较低，通常是87（在美国）
+
+mpg %>% 
+  count(fl) %>% 
+  arrange(desc(n))
+
+fct_other(mpg$fl, keep = c("p", "r")) %>% fct_count()
+
+fct_other(mpg$fl, drop = c("c", "d", "e")) %>% fct_count()
+```
+
+## 保存合并后的类别
+
+```{r}
+# 保存合并后的类别
+
+mpg <- mpg %>% 
+  mutate(fl = fct_other(fl, keep = c("p", "r")),
+         class = fct_collapse(class,
+                               "compact" = c("compact", "subcompact"),
+                               "midsize" = c("midsize", "minivan", "pickup"))
+         )
+
+mpg %>% count(fl)
+
+mpg %>% count(class)
+```
+
