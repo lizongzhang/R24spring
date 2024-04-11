@@ -18,7 +18,7 @@ title: "第7讲"
 
 <h3 style="color: #044875;"> 习题讲评 </h3>
 
-<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">[第7讲习题答案代码](https://lizongzhang.github.io/stat/solution7.html)
+<img src="img/link.png" style="width: 24px; height: 24px;margin-right: 10px">[第7讲习题答案代码](https://lizongzhang.github.io/stat24/)
 
 <h3 style="color: #044875;"> 拓展资源 </h3>
 
