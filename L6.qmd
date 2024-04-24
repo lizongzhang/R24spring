@@ -85,6 +85,6 @@ title: "第6讲"
 
 
 ## 期中自测
-<img src="img/link.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[期中自测](https://lizongzhang.github.io/stat24/quiz.html)
+<img src="img/link.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[期中自测](https://lizongzhang.github.io/r24/quiz.html)
 
 
