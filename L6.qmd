@@ -84,3 +84,7 @@ title: "第6讲"
 <img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[R如何快速考察数据分布？批量绘制条形图、直方图、箱线图、QQ图](https://www.bilibili.com/video/BV1Mx4y1m7mT/)
 
 
+## 期中自测
+<img src="img/link.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px">[期中自测](https://lizongzhang.github.io/stat24/quiz.html)
+
+

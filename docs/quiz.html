@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R语言与统计应用24春 - 第6讲</title>
+<title>R语言与统计应用24春 - quiz</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">第5讲</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./L6.html" aria-current="page"> 
+    <a class="nav-link" href="./L6.html"> 
 <span class="menu-text">第6讲</span></a>
   </li>  
   <li class="nav-item">
@@ -148,27 +148,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#第6讲-描述统计与三大分布" id="toc-第6讲-描述统计与三大分布" class="nav-link active" data-scroll-target="#第6讲-描述统计与三大分布">第6讲 描述统计与三大分布</a>
-  <ul class="collapse">
-  <li><a href="#教学视频" id="toc-教学视频" class="nav-link" data-scroll-target="#教学视频">教学视频</a></li>
-  <li><a href="#本章习题" id="toc-本章习题" class="nav-link" data-scroll-target="#本章习题">本章习题</a></li>
-  <li><a href="#习题答案" id="toc-习题答案" class="nav-link" data-scroll-target="#习题答案">习题答案</a></li>
-  <li><a href="#拓展资源" id="toc-拓展资源" class="nav-link" data-scroll-target="#拓展资源">拓展资源</a></li>
-  <li><a href="#期中自测" id="toc-期中自测" class="nav-link" data-scroll-target="#期中自测">期中自测</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">第6讲</h1>
+<h1 class="title">quiz</h1>
 </div>
 
 
@@ -185,68 +172,52 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="第6讲-描述统计与三大分布" class="level1">
-<h1>第6讲 描述统计与三大分布</h1>
-<p><img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat/R6.1.html">讲义6.1 描述统计量的计算</a></p>
-<p><img src="img/teacher.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat/R6.2.html">讲义6.2 绘制概率密度曲线</a></p>
-<section id="教学视频" class="level2">
-<h2 class="anchored" data-anchor-id="教学视频">教学视频</h2>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1PF411N74S/">R描述统计量的批量计算describe函数</a></p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1GN4y177GK/">R计算分位数quantile函数</a></p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1vr4y1L75F/">利用R绘制正态分布概率密度曲线</a></p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1ga411T7vS/">R不同自由度下的卡方分布比较——rchisq函数和for循环的应用</a></p>
-</section>
-<section id="本章习题" class="level2">
-<h2 class="anchored" data-anchor-id="本章习题">本章习题</h2>
-<details>
-<summary>
-第1题
-</summary>
-<p>第1题：数据：ggplot2::mpg</p>
-<p>要求：将代码与输出结果转成图片后提交。</p>
-<p>1.1 报告该数据集中所有定量变量的均值、中位数、最⼤值、最小值、四分位数、⽅差、标准差、偏度和峰度。</p>
-<p>1.2 将mpg中的汽车按照drv的不同分为三组（front-wheel, four-wheel, rear-wheel）, 计算各组的cty和hwy的均值、中位数、最⼤值、最小值和标准差。</p>
-</details>
-<details>
-<summary>
-第2题
-</summary>
-<p>第2题：绘制概率密度曲线 2.1 在同⼀个坐标系下绘制N(0,1),N(-1,0.25),N(2,4)的概率密度曲线。</p>
-<p>2.2 在同⼀个坐标系下绘制N(0,1), t(2), t(5),t(30)的概率密度曲线。</p>
-<p>2.3 在同⼀个坐标系下绘制chisq(5), chisq(10), chisq(30)的概率密度曲线。</p>
-<p>2.4 同⼀个坐标系下绘制F(2, 5), F(5, 10)的概率密度曲线。</p>
-</details>
-<details>
-<summary>
-第3题
-</summary>
-<p>第3题:绘制直方图。 用循环语句完成下列图形的绘制：</p>
-<p>3.1 ⽣成1000个服从自由度为4的卡方分布的随机数，绘制其直⽅图。</p>
-<p>3.2 ⽣成1000个服从自由度为8的卡方分布的随机数，绘制其直⽅图。</p>
-<p>3.3 ⽣成1000个服从自由度为12的卡方分布的随机数，绘制其直⽅图。</p>
-<p>3.4 ⽣成1000个服从自由度为16的卡方分布的随机数，绘制其直⽅图。</p>
-<p>3.5 ⽣成1000个服从自由度为20的卡方分布的随机数，绘制其直⽅图。</p>
-3.6 ⽣成1000个服从自由度为24的卡方分布的随机数，绘制其直⽅图。
-</details>
-</section>
-<section id="习题答案" class="level2">
-<h2 class="anchored" data-anchor-id="习题答案">习题答案</h2>
-<p><img src="img/link.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat/6solution.html">第6讲习题答案代码</a></p>
-</section>
-<section id="拓展资源" class="level2">
-<h2 class="anchored" data-anchor-id="拓展资源">拓展资源</h2>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1yj411t71t/">R如何快速预览变量分布？summarytools::dfSummary()</a></p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1WN411w7wd/">R描述统计输出结果的表格化及导出到word文档</a></p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1yz421f7Uh/">R 如何快速诊断数据的缺失值异常值和分布特征?</a></p>
-<p><img src="img/video.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://www.bilibili.com/video/BV1Mx4y1m7mT/">R如何快速考察数据分布？批量绘制条形图、直方图、箱线图、QQ图</a></p>
-</section>
-<section id="期中自测" class="level2">
-<h2 class="anchored" data-anchor-id="期中自测">期中自测</h2>
-<p><img src="img/link.png" alt="讲义" style="width: 24px; height: 24px;margin-right: 10px"><a href="https://lizongzhang.github.io/stat24/quiz.html">期中自测</a></p>
+<p>第1题: 将满足下列条件的航班筛选出来，保存为一个新的数据框christmas_jfk, 该数据框中一共有多少个航班？</p>
+<ol type="1">
+<li><p>航班出发日期为2013年12月24日.</p></li>
+<li><p>出发地(origin)机场是”JFK”.</p></li>
+</ol>
+<ul>
+<li><p>John F. Kennedy International Airport, JFK</p></li>
+<li><p>LaGuardia Airport, LGA</p></li>
+<li><p>Newark Liberty International Airport, EWR</p></li>
+</ul>
+<ol start="3" type="1">
+<li>航空公司(carrier)是”AA”,或者”UA”, 或者”US”.</li>
+</ol>
+<ul>
+<li><p>AA, American Airlines.</p></li>
+<li><p>UA, United Airlines</p></li>
+<li><p>US, US Airways</p></li>
+</ul>
+<ol start="4" type="1">
+<li>将到达延误时长(arr_delay)中有缺失值的行剔除</li>
+</ol>
+<p>第2题: 对数据框christmas_jfk, 按照到达延误时长(arr_delay)降序排列航班</p>
+<p>第3题: 绘制数据框christmas_jfk中出发时间(dep_time)和到达延误时长(arr_delay)的散点图，散点的颜色用航空公司(carrier)来映射, 散点的大小用飞行距离来映射。</p>
+<p>第4题：将出发地(origin)是”JFK”机场的航班筛选出来, 创建数据框jfk_flights, 在该数据框中追加如下变量：</p>
+<ol type="1">
+<li>追加新变量distance_group。根据distance(单位：英里)的数值，将航班分为短途、中途和长途三类。 distance_group值为”short”, “medium”, “long”。distance_group与distance的对应关系如下：</li>
+</ol>
+<ul>
+<li><p>短途飞行（Short-haul flight）：飞行距离少于500英里的航班。</p></li>
+<li><p>中途飞行（Medium-haul flight）：飞行距离在500到1,550英里之间的航班。</p></li>
+<li><p>长途飞行（Long-haul flight）：飞行距离超过1,550英里的航班</p></li>
+</ul>
+<ol start="2" type="1">
+<li><p>追加新变量status。若arr_delay的值为缺失值，则status等于cancelled，若arr_delay的值不是缺失值，则status等于normal。</p></li>
+<li><p>追加新变量month_name，将month的值转换为月份的英文名称，例如1转换为January，2转换为February，以此类推。</p></li>
+</ol>
+<p>第5题：绘制出第1题中得到的数据框jfk_flights中航班数量的条形图，横坐标为月份的英文名称，纵坐标为航班数量。</p>
+<p>第6题：绘制出第1题中得到的数据框jfk_flights中每个月份的取消/正常航班数量的条形图，横坐标为月份的英文名称，纵坐标为航班数量。</p>
+<p>第7题：如果你想尽可能避免延误，你应该选择哪个时间段起飞的航班？</p>
+<p>第8题：哪三家航空公司(carrier)的平均延误时间(arr_delay)最长？</p>
+<p>第9题：哪个月份的平均延误时间(arr_delay)最长？</p>
+<p>第10题：将延误时间(arr_delay)超过15分钟的定义为延误航班。 计算各个月份的延误航班的比例，并按比例降序排列。</p>
+<p>第11题：将延误时间(arr_delay)超过15分钟的定义为延误航班。 计算各个航空公司(carrier)的延误航班的比例，并按各航空公司航班数量降序排列。</p>
+<p>第12题：从JFK机场出发(origin)的航班中，航班数量最多的5家航空公司是哪些？并统计出其航班数量？</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
